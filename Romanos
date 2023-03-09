@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+void cambio(int valor, const char &a, const char &b, const char &c) {
+	if (valor < 4) {
+		for (int i = 0; i < valor; i++) {
+			cout << a;
+		}
+	}
+	else if (valor == 9) cout << a << b;
+	else if (valor == 4) cout << a << c;
+	else if (valor >= 5) {
+		cout << c;
+		valor = valor - 5;
+		for (int i = 0; i < valor; i++) {
+			cout << a;
+		}
+	}
+}
+void main() {
+	cout << "Introduce el numero entre 0 y 3999" << endl;
+	int num;
+	cin >> num;
+	cout << "El numero en Romano es:" << endl;
+	int mil = num / 1000; cambio(mil, 'M', 'M', 'M');
+	int cent = (num / 100) % 10; cambio(cent, 'C', 'M', 'D');
+	int dec = (num - mil * 1000 - cent * 100) / 10; cambio(dec, 'X', 'C', 'L');
+	int uds = (num - mil * 1000 - cent * 100 - dec * 10); cambio(uds, 'I', 'X', 'V');
+}
