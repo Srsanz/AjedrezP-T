@@ -80,7 +80,7 @@ void OnTimer(int value)
 
 void OnMouseClick(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        std::cout << "Posicion del raton: (" << x << ", " << y << ")" << std::endl;
+        cout << "Posicion del raton: (" << x << ", " << y << ")" << std::endl;
         //vector2D prubea;
         // prueba.x=x;
         // pprueba.y=y;
