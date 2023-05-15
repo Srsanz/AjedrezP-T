@@ -85,10 +85,10 @@ void Ondraw() {
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             if ((x + y) % 2 == 0) {
-                glColor3f(1.0, 1.0, 1.0); // Color blanco
+                glColor3ub(156, 208, 224); // Color clarito
             }
             else {
-                glColor3f(0.7, 0.7, 0.7); // Color gris claro
+                glColor3ub(93, 155, 155); // Color oscurito
             }
             glBegin(GL_QUADS);
             glVertex2i(x * 75, y * 75);
