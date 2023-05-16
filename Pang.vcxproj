@@ -20,10 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="src\Tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Tablero.h" />
+=======
+    <ClCompile Include="src\Peon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Coordinador.h" />
+    <ClInclude Include="Peon.h" />
+>>>>>>> 0e4fa2c527d64665f43b5bda3b25c6314c28af88
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
