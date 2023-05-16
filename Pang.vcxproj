@@ -22,9 +22,11 @@
     <ClCompile Include="src\Coordinador.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Peon.cpp" />
+    <ClCompile Include="src\Tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Peon.h" />
+    <ClInclude Include="src\Tablero.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Coordinador.h" />
