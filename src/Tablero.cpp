@@ -858,7 +858,7 @@ void Tablero::dibujaTablero() {
 	glEnd();
 
 	//---------------------------------------------
-	//no borrar esta linea ni poner nada despues
+	//no borrar esta linea ni poner nada despues ah sgdhagdhsagdjwhfdgj
 	glutSwapBuffers();
 }
 }
