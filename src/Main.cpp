@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//Antonio es bobo
 
 Coordinador coordinador;
 
