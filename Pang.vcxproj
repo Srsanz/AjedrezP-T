@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Coordinador.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Peon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Peon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Coordinador.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
