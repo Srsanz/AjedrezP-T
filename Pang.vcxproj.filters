@@ -18,12 +18,20 @@
     <ClCompile Include="src\Main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\Peon.cpp">
+=======
+    <ClCompile Include="src\Coordinador.cpp">
+>>>>>>> 82942927c597833cfc75f63094a84d43761fe9fe
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="src\Peon.h">
+=======
+    <ClInclude Include="src\Coordinador.h">
+>>>>>>> 82942927c597833cfc75f63094a84d43761fe9fe
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
