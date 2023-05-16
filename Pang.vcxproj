@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="Coordinador.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Peon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coordinador.h" />
+    <ClInclude Include="Peon.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
