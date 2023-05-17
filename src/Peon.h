@@ -19,7 +19,7 @@ public:
 	// AÑADIR VECTOR 2D
 	// Vector2D posicion;
 
-	Peon(int x, int y) {
+	Peon() {
 		tipo = TipoPieza::Peon;
 
 
@@ -30,6 +30,7 @@ public:
 
 
 	void dibuja() const override {
+
 		glColor3f(1.0, 0.0, 0.0); // Color amarillo
 		glBegin(GL_QUADS);
 		glVertex2i(0, 0);

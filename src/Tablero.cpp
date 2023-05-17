@@ -79,11 +79,16 @@ void Tablero::inicializa() {
 		board[i][1] = new Peon(i, 1);
 	}
 	*/
-	//board[4][5] = new Peon(5,6);
-	//board[0][6] = new Peon(2, 6);
-	board[0][1] = new Peon(0, 1);
-	board[1][6] = new Peon(1, 6);
-	board[2][6] = new Peon(2, 6);
+
+	board[0][1] = new Peon();
+	board[1][1] = new Peon();
+	board[2][1] = new Peon();
+	board[3][1] = new Peon();
+	board[4][1] = new Peon();
+	board[5][1] = new Peon();
+	board[6][1] = new Peon();
+	board[7][1] = new Peon();
+
 
 }
 
