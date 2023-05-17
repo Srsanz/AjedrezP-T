@@ -2,6 +2,7 @@
 #include "Peon.h"
 
 
+
 Tablero::~Tablero()
 {
 	//pieza.destruirContenido();
@@ -80,15 +81,14 @@ void Tablero::inicializa() {
 	}
 	*/
 
-	board[0][1] = new Peon();
-	board[1][1] = new Peon();
-	board[2][1] = new Peon();
-	board[3][1] = new Peon();
-	board[4][1] = new Peon();
-	board[5][1] = new Peon();
-	board[6][1] = new Peon();
-	board[7][1] = new Peon();
-
+	board[0][1] = new Peon(1);
+	board[1][1] = new Peon(2);
+	board[2][1] = new Peon(3);
+	board[3][1] = new Peon(4);
+	board[4][1] = new Peon(5);
+	board[5][1] = new Peon(6);
+	board[6][1] = new Peon(7);
+	board[7][1] = new Peon(8);
 
 }
 
