@@ -13,15 +13,14 @@ class Peon : public Pieza
 
 	SpriteSequence sprite1{ "imagenes/peonnegro.png", 1 };
 	SpriteSequence sprite2{ "imagenes/peonblanco.png", 1 };
-	int x, y;
+	//int x, y;
 
 public:
 	// AÑADIR VECTOR 2D
 	// Vector2D posicion;
 
-	Peon() {
+	Peon(int num) {
 		tipo = TipoPieza::Peon;
-
 
 	}
 	//virtual~Peon(){};
