@@ -22,7 +22,6 @@ public:
 	Peon() {
 		tipo = TipoPieza::Peon;
 
-
 	}
 	//virtual~Peon(){};
 
