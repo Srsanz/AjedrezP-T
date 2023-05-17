@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//Antonio es bobo
+
 
 Coordinador coordinador;
 
@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
-//coment
+
 void OnDraw(void)
 {
 	//Borrado de la pantalla	
