@@ -83,6 +83,7 @@ void Tablero::inicializa() {
 	//board[0][6] = new Peon(2, 6);
 	board[0][1] = new Peon(0, 1);
 	board[1][6] = new Peon(1, 6);
+	board[2][6] = new Peon(2, 6);
 
 }
 
