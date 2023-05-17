@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
-
+	//glutMouseFunc(onMouseClick);
 	//mundo.inicializa();
 
 
@@ -53,6 +53,12 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+
+/*void onMouseClick(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		cout << "Posicion del raton: (" << x << ", " << y << ")" << endl;
+	}
+}*/
 
 void OnDraw(void)
 {
