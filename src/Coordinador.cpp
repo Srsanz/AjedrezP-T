@@ -56,12 +56,17 @@ void Coordinador::tecla(unsigned char key)
 		if (key == 'c')
 			estado = INICIO;
 	}
+	
+	if (estado == PARTIDA && key == 'w') {
+		tablero.mueve('w');
+	}
 
 }
 void Coordinador::mueve()
 {
 	if (estado == PARTIDA) {
-		tablero.mueve();
+
+		//tablero.mueve();
 		// METER MOVIMINETO DE LA PARTIDA
 	}
 }
