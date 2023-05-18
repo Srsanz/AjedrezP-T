@@ -16,7 +16,7 @@ public:
 	void dibuja();
 	void inicializa();
 	void tecla(unsigned char key);   // Cambiar por codigo del raton
-	void mueve();
+	void mueve(char letra);
 
 private:
 	// Creacion matriz de piezas
