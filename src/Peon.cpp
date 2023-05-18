@@ -15,6 +15,11 @@ void Peon:: dibuja() {
 }
 
 
+void Peon::mover() {
+	
+
+}
+
 
 
 /*
