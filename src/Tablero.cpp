@@ -112,8 +112,11 @@ void Tablero::tecla(unsigned char key) {
 
 }
 
-void Tablero::mueve() {
-
+void Tablero::mueve(char letra) {
+	if (letra == 'w') {
+		delete board[0][1];
+		board[0][1] = nullptr;
+	}
 
 
 }
