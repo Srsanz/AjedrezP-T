@@ -36,7 +36,7 @@ public:
 	float altura;
 
 	void dibuja() override ;
-
+	void mover() override ;
 
 	// FUNCIONES DEL PEON
 	/*
