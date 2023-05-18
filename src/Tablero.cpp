@@ -30,10 +30,10 @@ void Tablero::dibuja() {
 	for (int y = 0; y < 8; y++) {
 		for (int x = 0; x < 8; x++) {
 			if ((x + y) % 2 == 0) {
-				glColor3f(1.0, 1.0, 1.0); // Color blanco
+				glColor3ub(156, 208, 224); // Color clarito
 			}
 			else {
-				glColor3f(0.7, 0.7, 0.7); // Color gris claro
+				glColor3ub(93, 155, 155); // Color oscurito
 			}
 			glBegin(GL_QUADS);
 			glVertex2i(x * cellSize, y * cellSize);
@@ -81,6 +81,10 @@ void Tablero::inicializa() {
 	}
 	*/
 
+	//Cnd consigamos la seleccion de piezas con el raton el numero se puede quitar
+	//y poner solo una variable que sea el color
+
+	//PEONES BLANCOS
 	board[0][1] = new Peon(1);
 	board[1][1] = new Peon(2);
 	board[2][1] = new Peon(3);
@@ -89,6 +93,16 @@ void Tablero::inicializa() {
 	board[5][1] = new Peon(6);
 	board[6][1] = new Peon(7);
 	board[7][1] = new Peon(8);
+
+	//PEONES NEGROS
+	board[0][6] = new Peon(9);
+	board[1][6] = new Peon(10);
+	board[2][6] = new Peon(11);
+	board[3][6] = new Peon(12);
+	board[4][6] = new Peon(13);
+	board[5][6] = new Peon(14);
+	board[6][6] = new Peon(15);
+	board[7][6] = new Peon(16);
 
 }
 
