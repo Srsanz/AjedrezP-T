@@ -34,8 +34,10 @@ public:
 	virtual~Peon(){};
 
 	float altura;
-
+	
 	void dibuja() override ;
+
+	// PRUBEBA
 	void mover() override ;
 
 	// FUNCIONES DEL PEON
