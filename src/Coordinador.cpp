@@ -49,7 +49,9 @@ void Coordinador::tecla(unsigned char key)
 	}
 	else if (estado == PARTIDA)
 	{
-		//glutMouseFunc(tablero.onMouseClick);
+		/*glutMouseFunc([](int button, int state, int x, int y) {
+			Tablero::confirmaMouse(button, state, x, y, tablero);
+			});*/
 	}
 	else if (estado == FIN)
 	{

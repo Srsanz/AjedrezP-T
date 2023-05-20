@@ -15,9 +15,12 @@ public:
 
 	void dibuja();
 	void inicializa();
-	void onMouseClick(int button, int state, int x, int y); //Obtiene la posicion del raton y mueve pieza
 	void mueve(char letra);
-
+	void onMouseClick(int button, int state, int x, int y); //Obtiene la posicion del raton y mueve pieza
+	static void confirmaMouse(int button, int state, int x, int y, Tablero* tablero)
+	{
+		tablero->onMouseClick(button, state, x, y);
+	}
 	
 private:
 	Pieza* board[8][8];
