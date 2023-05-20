@@ -64,6 +64,13 @@ void Coordinador::tecla(unsigned char key)
 	}
 
 }
+
+void Coordinador:: onMouseClick(int button, int state, int x, int y) {
+
+	tablero.onMouseClick(button, state,x,y);
+
+	glutPostRedisplay();
+}
 void Coordinador::mueve()
 {
 	if (estado == PARTIDA) {
