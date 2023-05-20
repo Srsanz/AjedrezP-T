@@ -15,12 +15,14 @@ public:
 
 	void dibuja();
 	void inicializa();
-	void tecla(unsigned char key);   // Cambiar por codigo del raton
+	void onMouseClick(int button, int state, int x, int y); //Obtiene la posicion del raton y mueve pieza
 	void mueve(char letra);
 
+	
 private:
-	// Creacion matriz de piezas
 	Pieza* board[8][8];
+	// Creacion matriz de piezas
+	
 
 	// Creacion de las piezas
 	// Peon peon1;

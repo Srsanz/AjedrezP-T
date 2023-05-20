@@ -106,10 +106,39 @@ void Tablero::inicializa() {
 
 }
 
-void Tablero::tecla(unsigned char key) {
+int xInicial = -1, yInicial = -1;
+int xFinal = -1, yFinal = -1;
+void Tablero::onMouseClick(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		// Calcular la posición del clic en términos de celdas del tablero
+		int casillaX = x / cellSize;
+		int casillaY = (600 - y) / cellSize;  // Convertir la coordenada y
 
+		if (xInicial == -1 && yInicial == -1) {
+			// Establecer la posición inicial del peón
+			xInicial = casillaX;
+			yInicial = casillaY;
+		}
+		else {
+			// Establecer la posición final del peón
+			xFinal = casillaX;
+			yFinal = casillaY;
 
+			// Mover el peón a la posición final
+			board[xFinal][yFinal]=nullptr; // Eliminar la pieza de la posición final si existe
+			board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+			board[xFinal][yFinal] = new Peon(1);
 
+			// Reiniciar las posiciones inicial y final del peón
+			xInicial = -1;
+			yInicial = -1;
+			xFinal = -1;
+			yFinal = -1;
+
+			// Redibujar el tablero con el peón movido
+			glutPostRedisplay();
+		}
+	}
 }
 
 void Tablero::mueve(char letra) {

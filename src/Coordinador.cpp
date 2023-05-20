@@ -49,7 +49,7 @@ void Coordinador::tecla(unsigned char key)
 	}
 	else if (estado == PARTIDA)
 	{
-		tablero.tecla(key);
+		//tablero.tecla(key);
 	}
 	else if (estado == FIN)
 	{
