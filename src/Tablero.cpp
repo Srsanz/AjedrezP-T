@@ -108,11 +108,12 @@ void Tablero::inicializa() {
 
 int xInicial = -1, yInicial = -1;
 int xFinal = -1, yFinal = -1;
+
 void Tablero::onMouseClick(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 		// Calcular la posición del clic en términos de celdas del tablero
-		int casillaX = x / cellSize;
-		int casillaY = (600 - y) / cellSize;  // Convertir la coordenada y
+		int casillaX = x / 75;
+		int casillaY = (600 - y) / 75;  // Convertir la coordenada y
 
 		if (xInicial == -1 && yInicial == -1) {
 			// Establecer la posición inicial del peón
@@ -125,7 +126,9 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yFinal = casillaY;
 
 			// Mover el peón a la posición final
+			delete board[xFinal][yFinal];
 			board[xFinal][yFinal]=nullptr; // Eliminar la pieza de la posición final si existe
+			delete board[xInicial][yInicial];
 			board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
 			board[xFinal][yFinal] = new Peon(1);
 
