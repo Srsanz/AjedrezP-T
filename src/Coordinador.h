@@ -12,6 +12,7 @@ public:
 	void dibuja();
 	void mueve();
 	void tecla(unsigned char key);
+	void onMouseClick(int button, int state, int x, int y);
 
 protected:
 
