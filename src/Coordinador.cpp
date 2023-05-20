@@ -49,7 +49,7 @@ void Coordinador::tecla(unsigned char key)
 	}
 	else if (estado == PARTIDA)
 	{
-		//tablero.tecla(key);
+		//glutMouseFunc(tablero.onMouseClick);
 	}
 	else if (estado == FIN)
 	{
