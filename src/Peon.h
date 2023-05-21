@@ -15,7 +15,7 @@ class Peon : public Pieza
 	SpriteSequence sprite1{ "imagenes/peonblanco.png", 1 };
 	SpriteSequence sprite2{ "imagenes/peonnegro.png", 1 };
 	//int x, y;
-	int numero;
+	//int numero;
 
 public:
 	// AÑADIR VECTOR 2D
