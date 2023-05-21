@@ -126,30 +126,60 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			// Establecer la posición inicial del peón
 			xInicial = casillaX;
 			yInicial = casillaY;
-
 		}
 		else {
 			xFinal = casillaX;
 			yFinal = casillaY;
-			if (board[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
-				xInicial = -1;
-				yInicial = -1;
-				board[xFinal][yFinal] = nullptr;
-				//return;
+			char colorPeon = board[xInicial][yInicial]->obtenerColor();
+
+			// Verificar si el movimiento es válido para un peón
+			bool movimientoValido = false;
+
+			// Si el peón es blanco
+			if (colorPeon == 'b') {
+				// Movimiento válido: mover hacia adelante una casilla
+				if (yFinal == yInicial + 1 && xFinal == xInicial) {
+					movimientoValido = true;
+				}
+				// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
+				else if (yFinal == yInicial + 2 && xFinal == xInicial && yInicial == 1) {
+					movimientoValido = true;
+				}
+				// Movimiento válido: captura diagonal a la derecha
+				else if (yFinal == yInicial + 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)) {
+					movimientoValido = true;
+				}
 			}
-			else if (board[xFinal][yFinal] != nullptr) { // La casilla de destino está ocupada
+			// Si el peón es negro
+			else if (colorPeon == 'n') {
+				// Movimiento válido: mover hacia adelante una casilla
+				if (yFinal == yInicial - 1 && xFinal == xInicial) {
+					movimientoValido = true;
+				}
+				// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
+				else if (yFinal == yInicial - 2 && xFinal == xInicial && yInicial == 6) {
+					movimientoValido = true;
+				}
+				// Movimiento válido: captura diagonal a la izquierda
+				else if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)) {
+					movimientoValido = true;
+				}
+			}
+
+			if (!movimientoValido) {
+				return; // Movimiento inválido, salir de la función
+			}
+
+			if ((board[xFinal][yFinal] != nullptr) && (yFinal == (yInicial - 1 || yInicial + 1) && (xFinal == xInicial + 1 || xFinal == xInicial - 1))) { // La casilla de destino está ocupada y el movimiento no es diagonal
 				return;
 			}
-			else { //si la casilla esta vacia
-
-				char colorPeon = board[xInicial][yInicial]->obtenerColor();
+			else { // La casilla está vacía
 				// Mover el peón a la posición final
 				delete board[xFinal][yFinal];
 				board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
 				delete board[xInicial][yInicial];
 				board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
 				board[xFinal][yFinal] = new Peon(colorPeon);
-
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
 				yInicial = -1;
