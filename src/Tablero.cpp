@@ -107,7 +107,11 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 
 
 			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal)) {
-				return; // Movimiento inválido, salir de la función
+				//return; // Movimiento inválido, salir de la función
+				xInicial = -1;
+				yInicial = -1;
+				xFinal = -1;
+				yFinal = -1;
 			}
 
 
