@@ -128,28 +128,30 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yInicial = casillaY;
 		}
 		else {
-			// Establecer la posición final del peón
 			xFinal = casillaX;
 			yFinal = casillaY;
+			if (board[xFinal][yFinal] != nullptr) { // La casilla de destino está ocupada
+				return;
+			}
+			else { //si la casilla esta vacia
 
-			char colorPeon = board[xInicial][yInicial]->obtenerColor();
-			// Mover el peón a la posición final
-			delete board[xFinal][yFinal];
-			board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
-			delete board[xInicial][yInicial];
-			board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-			board[xFinal][yFinal] = new Peon(colorPeon);
-			
+				char colorPeon = board[xInicial][yInicial]->obtenerColor();
+				// Mover el peón a la posición final
+				delete board[xFinal][yFinal];
+				board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
+				delete board[xInicial][yInicial];
+				board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+				board[xFinal][yFinal] = new Peon(colorPeon);
 
+				// Reiniciar las posiciones inicial y final del peón
+				xInicial = -1;
+				yInicial = -1;
+				xFinal = -1;
+				yFinal = -1;
 
-			// Reiniciar las posiciones inicial y final del peón
-			xInicial = -1;
-			yInicial = -1;
-			xFinal = -1;
-			yFinal = -1;
-
-			// Redibujar el tablero con el peón movido
-			glutPostRedisplay();
+				// Redibujar el tablero con el peón movido
+				glutPostRedisplay();
+			}
 		}
 	}
 }
