@@ -34,16 +34,9 @@ public:
 
 	void dibuja() override;
 
-	// PRUBEBA
-	//bool mover(int xInicial, int yInicial, int xFinal, int yFinal) override;
+	
+	bool mover(int xInicial, int yInicial, int xFinal, int yFinal) override;
 
-	// FUNCIONES DEL PEON
-	/*
-	void setPos(float ix, float iy);
-	float getPosX();
-	float getPosY();
-	void mover();
-
-	*/
+	
 
 };
