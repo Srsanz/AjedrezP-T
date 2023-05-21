@@ -59,9 +59,6 @@ void Coordinador::tecla(unsigned char key)
 			estado = INICIO;
 	}
 	
-	if (estado == PARTIDA && key == 'w') {
-		tablero.mueve('w');
-	}
 
 }
 
@@ -71,6 +68,7 @@ void Coordinador:: onMouseClick(int button, int state, int x, int y) {
 
 	glutPostRedisplay();
 }
+
 void Coordinador::mueve()
 {
 	if (estado == PARTIDA) {
