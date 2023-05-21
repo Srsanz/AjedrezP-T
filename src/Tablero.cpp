@@ -1,7 +1,7 @@
 #include "Tablero.h"
 #include "Peon.h"
 #include "Pieza.h"
-
+#include "Caballo.h"
 
 Tablero::~Tablero()
 {
@@ -72,7 +72,10 @@ void Tablero::inicializa() {
 	}
 
 
-
+	board[1][0] = new Caballo('b');
+	board[6][0] = new Caballo('b');
+	board[1][7] = new Caballo('n');
+	board[6][7] = new Caballo('n');
 	for (int i = 0; i < 8; i++) {
 		board[i][1] = new Peon('b'); //peones blancos en toda la fila 1
 		board[i][6] = new Peon('n'); //peones negros en toda la fila 6
@@ -100,7 +103,8 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 		else {
 			xFinal = casillaX;
 			yFinal = casillaY;
-			char colorPeon = board[xInicial][yInicial]->obtenerColor();
+			char color = board[xInicial][yInicial]->obtenerColor();
+
 
 			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal)) {
 				return; // Movimiento inválido, salir de la función
@@ -113,7 +117,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
 				delete board[xInicial][yInicial];
 				board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-				board[xFinal][yFinal] = new Peon(colorPeon);
+				board[xFinal][yFinal] = new Peon(color);
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
 				yInicial = -1;

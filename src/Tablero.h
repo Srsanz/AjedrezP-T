@@ -2,7 +2,8 @@
 #include "Peon.h"
 #include "Pieza.h"
 
-
+const int piezeSize = 1;
+const int cellSize = 5;
 
 
 class Tablero

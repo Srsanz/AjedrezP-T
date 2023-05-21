@@ -12,6 +12,7 @@ class Pieza
 {
 public:
     TipoPieza tipo;
+    int tipoFigura;
     int x, y;
     bool is_white = 0;
     char color;
@@ -22,6 +23,7 @@ public:
        return true;
    };
    char obtenerColor() const;
+   int obtenerTipo();
 };
 
 

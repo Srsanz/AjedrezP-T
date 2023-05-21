@@ -1,12 +1,9 @@
 #pragma once
 #include "Pieza.h"
-#include "Vector2D.h"
 #include "ETSIDI.h"
 #include "freeglut.h"
 using ETSIDI::SpriteSequence;
 
-const int piezeSize = 1;
-const int cellSize = 5;
 
 
 
@@ -23,18 +20,18 @@ public:
 
 	Peon(char _color) {
 		color = _color;
-		tipo = TipoPieza::Peon;
+		tipo = TipoPieza(2);
 		sprite1.setCenter(-0.5, -0.5); //blancas
 		sprite1.setSize(4, 4);
 		sprite2.setCenter(-0.5, -0.5);
 		sprite2.setSize(4, 4);
-		altura = 1.8f;
+
 	}
 	
 
 	virtual~Peon(){};
 
-	float altura;
+
 	
 	void dibuja() override ;
 
