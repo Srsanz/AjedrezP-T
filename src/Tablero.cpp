@@ -131,6 +131,8 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			delete board[xInicial][yInicial];
 			board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
 			board[xFinal][yFinal] = new Peon(1);
+			
+
 
 			// Reiniciar las posiciones inicial y final del peón
 			xInicial = -1;
@@ -144,11 +146,11 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 	}
 }
 
+
 void Tablero::mueve(char letra) {
 	if (letra == 'w') {
 		delete board[0][1];
 		board[0][1] = nullptr;
 	}
-
-
 }
+
