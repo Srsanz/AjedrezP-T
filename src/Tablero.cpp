@@ -84,6 +84,7 @@ void Tablero::inicializa() {
 	//Cnd consigamos la seleccion de piezas con el raton el numero se puede quitar
 	//y poner solo una variable que sea el color
 
+	/*
 	//PEONES BLANCOS
 	board[0][1] = new Peon(1);
 	board[1][1] = new Peon(2);
@@ -103,7 +104,13 @@ void Tablero::inicializa() {
 	board[5][6] = new Peon(14);
 	board[6][6] = new Peon(15);
 	board[7][6] = new Peon(16);
+	*/
 
+	//lo he hecho con un for para ahorrar lineas
+	for (int i = 0; i < 8; i++) {
+		board[i][1] = new Peon('b'); //peones blancos en toda la fila 1
+		board[i][6] = new Peon('n'); //peones negros en toda la fila 6
+	}
 }
 
 int xInicial = -1, yInicial = -1;
@@ -125,13 +132,13 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			xFinal = casillaX;
 			yFinal = casillaY;
 
-			int numeroPeon = board[xInicial][yInicial]->obtenerNumero();
+			char colorPeon = board[xInicial][yInicial]->obtenerColor();
 			// Mover el peón a la posición final
 			delete board[xFinal][yFinal];
 			board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
 			delete board[xInicial][yInicial];
 			board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-			board[xFinal][yFinal] = new Peon(numeroPeon);
+			board[xFinal][yFinal] = new Peon(colorPeon);
 			
 
 
