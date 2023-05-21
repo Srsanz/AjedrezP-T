@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Caballo.cpp" />
     <ClCompile Include="src\Coordinador.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Peon.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\Peon.h" />
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Tablero.h" />
