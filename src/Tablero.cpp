@@ -134,7 +134,8 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			if (board[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
 				xInicial = -1;
 				yInicial = -1;
-				return;
+				board[xFinal][yFinal] = nullptr;
+				//return;
 			}
 			else if (board[xFinal][yFinal] != nullptr) { // La casilla de destino está ocupada
 				return;
