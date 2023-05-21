@@ -13,3 +13,8 @@ void Caballo::dibuja() {
 	}
 	glPopMatrix();
 }
+
+
+bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
+	return true;
+}
