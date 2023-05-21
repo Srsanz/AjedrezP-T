@@ -6,7 +6,6 @@
 
 using namespace std;
 
-//hola guapos
 
 Coordinador coordinador;
 
