@@ -21,10 +21,10 @@ public:
 	// AÑADIR VECTOR 2D
 	// Vector2D posicion;
 
-	Peon(int num) {
-		numero = num;
+	Peon(char _color) {
+		color = _color;
 		tipo = TipoPieza::Peon;
-		sprite1.setCenter(-0.5, -0.5);
+		sprite1.setCenter(-0.5, -0.5); //blancas
 		sprite1.setSize(4, 4);
 		sprite2.setCenter(-0.5, -0.5);
 		sprite2.setSize(4, 4);
