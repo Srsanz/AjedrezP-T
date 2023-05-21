@@ -126,10 +126,18 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			// Establecer la posición inicial del peón
 			xInicial = casillaX;
 			yInicial = casillaY;
+<<<<<<< HEAD
+=======
+			if (board[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
+				xInicial = -1;
+				yInicial = -1;
+			}
+>>>>>>> f7d5beecdfed769a798f197eeba3b987edf68b20
 		}
 		else {
 			xFinal = casillaX;
 			yFinal = casillaY;
+<<<<<<< HEAD
 			char colorPeon = board[xInicial][yInicial]->obtenerColor();
 
 			// Verificar si el movimiento es válido para un peón
@@ -171,6 +179,9 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			}
 
 			if ((board[xFinal][yFinal] != nullptr) && (yFinal == (yInicial - 1 || yInicial + 1) && (xFinal == xInicial + 1 || xFinal == xInicial - 1))) { // La casilla de destino está ocupada y el movimiento no es diagonal
+=======
+			if (board[xFinal][yFinal] != nullptr) { // La casilla de destino está ocupada
+>>>>>>> f7d5beecdfed769a798f197eeba3b987edf68b20
 				return;
 			}
 			else { // La casilla está vacía
