@@ -134,9 +134,3 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 
 
 
-void Tablero::mueve(char letra) {
-	if (letra == 'w') {
-		delete board[0][1];
-		board[0][1] = nullptr;
-	}
-}
