@@ -125,12 +125,13 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			xFinal = casillaX;
 			yFinal = casillaY;
 
+			int numeroPeon = board[xInicial][yInicial]->obtenerNumero();
 			// Mover el peón a la posición final
 			delete board[xFinal][yFinal];
-			board[xFinal][yFinal]=nullptr; // Eliminar la pieza de la posición final si existe
+			board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
 			delete board[xInicial][yInicial];
 			board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-			board[xFinal][yFinal] = new Peon(1);
+			board[xFinal][yFinal] = new Peon(numeroPeon);
 			
 
 
