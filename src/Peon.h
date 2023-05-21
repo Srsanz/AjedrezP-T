@@ -39,7 +39,7 @@ public:
 	void dibuja() override ;
 
 	// PRUBEBA
-	void mover() override ;
+	bool mover(int xInicial, int yInicial, int xFinal, int yFinal) override ;
 
 	// FUNCIONES DEL PEON
 	/*
