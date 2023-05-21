@@ -113,8 +113,6 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				xFinal = -1;
 				yFinal = -1;
 			}
-
-
 			else { // La casilla está vacía
 				// Mover el peón a la posición final
 				delete board[xFinal][yFinal];
