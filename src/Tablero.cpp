@@ -102,49 +102,10 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yFinal = casillaY;
 			char colorPeon = board[xInicial][yInicial]->obtenerColor();
 
-			/*// Verificar si el movimiento es válido para un peón
-			bool movimientoValido = false;
-
-			// Si el peón es blanco
-			if (colorPeon == 'b') {
-				// Movimiento válido: mover hacia adelante una casilla
-				if (yFinal == yInicial + 1 && xFinal == xInicial) {
-					movimientoValido = true;
-				}
-				// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
-				else if (yFinal == yInicial + 2 && xFinal == xInicial && yInicial == 1) {
-					movimientoValido = true;
-				}
-				// Movimiento válido: captura diagonal a la derecha
-				else if (yFinal == yInicial + 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)) {
-					movimientoValido = true;
-				}
-			}
-			// Si el peón es negro
-			else if (colorPeon == 'n') {
-				// Movimiento válido: mover hacia adelante una casilla
-				if (yFinal == yInicial - 1 && xFinal == xInicial) {
-					movimientoValido = true;
-				}
-				// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
-				else if (yFinal == yInicial - 2 && xFinal == xInicial && yInicial == 6) {
-					movimientoValido = true;
-				}
-				// Movimiento válido: captura diagonal a la izquierda
-				else if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)) {
-					movimientoValido = true;
-				}
-			}*/
-
-		
-
 			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal)) {
 				return; // Movimiento inválido, salir de la función
 			}
 
-			/*if ((board[xFinal][yFinal] != nullptr) && (yFinal == (yInicial - 1 || yInicial + 1) && (xFinal == xInicial + 1 || xFinal == xInicial - 1))) { // La casilla de destino está ocupada y el movimiento no es diagonal
-				return;
-			}*/
 
 			else { // La casilla está vacía
 				// Mover el peón a la posición final
