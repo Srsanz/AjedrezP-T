@@ -5,11 +5,11 @@ void Peon:: dibuja() {
 
 	glPushMatrix();
 	glColor3f(1.0f, 0.0f, 0.0f);
-	if(numero<=8){
-		sprite1.draw();
+	if (color == 'b') {
+		sprite1.draw(); //blancas
 	}
-	if (numero > 8) {
-		sprite2.draw();
+	else if (color == 'n') {
+		sprite2.draw(); //negras
 	}
 	glPopMatrix();
 }
