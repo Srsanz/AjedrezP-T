@@ -134,7 +134,17 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 		else {
 			xFinal = casillaX;
 			yFinal = casillaY;
+<<<<<<< HEAD
 			if (board[xFinal][yFinal] != nullptr) { // La casilla de destino está ocupada
+=======
+			if (board[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
+				xInicial = -1;
+				yInicial = -1;
+				board[xFinal][yFinal] = nullptr;
+				//return;
+			}
+			else if (board[xFinal][yFinal] != nullptr) { // La casilla de destino está ocupada
+>>>>>>> 86a559bceba955c5b51cd1b6e0c3503bf4723420
 				return;
 			}
 			else { //si la casilla esta vacia
