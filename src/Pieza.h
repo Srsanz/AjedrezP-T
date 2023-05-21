@@ -18,7 +18,7 @@ public:
     Pieza() : tipo(TipoPieza::None), x(0), y(0) {};
 
    virtual void dibuja() {};
-   virtual void mover() {};
+   virtual bool mover(int xInicial, int yInicial, int xFinal, int yFinal) {};
    char obtenerColor() const;
 };
 
