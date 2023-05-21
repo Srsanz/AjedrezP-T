@@ -30,6 +30,7 @@ public:
 		sprite2.setSize(4, 4);
 		altura = 1.8f;
 	}
+	
 
 	virtual~Peon(){};
 
@@ -50,3 +51,5 @@ public:
 	*/
 
 };
+
+
