@@ -26,6 +26,7 @@
     <ClCompile Include="src\Pieza.cpp" />
     <ClCompile Include="src\Reina.cpp" />
     <ClCompile Include="src\Tablero.cpp" />
+    <ClCompile Include="src\Torre.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Caballo.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Reina.h" />
     <ClInclude Include="src\Tablero.h" />
+    <ClInclude Include="src\Torre.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Coordinador.h" />
