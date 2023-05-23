@@ -76,6 +76,7 @@ void Tablero::inicializa() {
 	board[6][0] = new Caballo('b');
 	board[1][7] = new Caballo('n');
 	board[6][7] = new Caballo('n');
+
 	for (int i = 0; i < 8; i++) {
 		board[i][1] = new Peon('b'); //peones blancos en toda la fila 1
 		board[i][6] = new Peon('n'); //peones negros en toda la fila 6
@@ -104,7 +105,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			xFinal = casillaX;
 			yFinal = casillaY;
 			char color = board[xInicial][yInicial]->obtenerColor();
-
+			TipoPieza tipo= board[xInicial][yInicial]->obtenerTipo();
 
 			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal)) {
 				//return; // Movimiento inválido, salir de la función
@@ -119,7 +120,15 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
 				delete board[xInicial][yInicial];
 				board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-				board[xFinal][yFinal] = new Peon(color);
+
+				if (tipo == peon) {
+					board[xFinal][yFinal] = new Peon(color);
+				}
+
+				else if (tipo == caballo) {
+					board[xFinal][yFinal] = new Caballo(color);
+				}
+				
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
 				yInicial = -1;
