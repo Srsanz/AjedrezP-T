@@ -4,7 +4,7 @@ char Pieza::obtenerColor() const {
 	return color;
 }
 
-int Pieza::obtenerTipo() {
+TipoPieza Pieza::obtenerTipo() {
 	
-	return tipoFigura;
+	return tipo;
 }
