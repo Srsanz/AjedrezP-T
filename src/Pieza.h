@@ -1,10 +1,10 @@
 #pragma once
 
 
-enum class TipoPieza {
+enum TipoPieza {
     None,
-    Caballo,
-    Peon
+    caballo,
+    peon
 };
 
 
@@ -23,7 +23,7 @@ public:
        return true;
    };
    char obtenerColor() const;
-   int obtenerTipo();
+   TipoPieza obtenerTipo();
 };
 
 
