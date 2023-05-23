@@ -15,7 +15,7 @@ void Peon:: dibuja() {
 }
 
 
-bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
+bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) {
 
 	// Verificar si el movimiento es válido para un peón
 	//bool movimientoValido = false;
@@ -23,11 +23,11 @@ bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
 	// Si el peón es blanco
 	if (color == 'b') {
 		// Movimiento válido: mover hacia adelante una casilla
-		if (yFinal == yInicial + 1 && xFinal == xInicial) {
+		if (yFinal == yInicial + 1 && xFinal == xInicial && !ocupado) {
 			return true;
 		}
 		// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
-		else if (yFinal == yInicial + 2 && xFinal == xInicial && yInicial == 1) {
+		else if (yFinal == yInicial + 2 && xFinal == xInicial && yInicial == 1 && !ocupado) {
 			return true;
 		}
 		// Movimiento válido: captura diagonal a la derecha
@@ -50,9 +50,10 @@ bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
 			return true;
 		}
 	}
-	
+
 	return false;
 }
+
 
 
 
