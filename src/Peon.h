@@ -20,7 +20,7 @@ public:
 
 	Peon(char _color) {
 		color = _color;
-		tipo = TipoPieza(2);
+		tipo = TipoPieza(peon);
 		sprite1.setCenter(-0.5, -0.5); //blancas
 		sprite1.setSize(4, 4);
 		sprite2.setCenter(-0.5, -0.5);
