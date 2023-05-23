@@ -112,10 +112,10 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			
 			//if para ver si la casilla está ocupada
 			bool ocupado;
-			if (board[xInicial][yInicial] == nullptr) {
+			if (board[xFinal][yFinal] == nullptr) {
 				ocupado = 0;
 			}
-			else if (board[xInicial][yInicial] != nullptr) {
+			else if (board[xFinal][yFinal] != nullptr) {
 				ocupado = 1;
 				char color2 = board[xFinal][yFinal]->obtenerColor();
 				if (color == color2) return;
@@ -139,7 +139,6 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				if (tipo == peon) {
 					board[xFinal][yFinal] = new Peon(color);
 				}
-
 				else if (tipo == caballo) {
 					board[xFinal][yFinal] = new Caballo(color);
 				}
