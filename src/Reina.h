@@ -35,7 +35,7 @@ public:
 	void dibuja() override;
 
 
-	//bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal) override;
+	bool mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) override;
 
 
 
