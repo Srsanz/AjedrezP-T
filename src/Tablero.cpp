@@ -109,6 +109,8 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yFinal = casillaY;
 			char color = board[xInicial][yInicial]->obtenerColor();
 			TipoPieza tipo= board[xInicial][yInicial]->obtenerTipo();
+			
+			//if para ver si la casilla está ocupada
 			bool ocupado;
 			if (board[xInicial][yInicial] == nullptr) {
 				ocupado = 0;
