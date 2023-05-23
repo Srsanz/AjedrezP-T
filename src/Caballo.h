@@ -20,7 +20,7 @@ public:
 
 	Caballo(char _color) {
 		color = _color;
-		tipo = TipoPieza::Caballo;
+		tipo = TipoPieza::caballo;
 		sprite1.setCenter(-0.5, -0.5); //blancas
 		sprite1.setSize(4, 4);
 		sprite2.setCenter(-0.5, -0.5);
