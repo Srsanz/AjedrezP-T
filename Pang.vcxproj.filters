@@ -9,6 +9,8 @@
     <ClCompile Include="src\Caballo.cpp" />
     <ClCompile Include="src\Reina.cpp" />
     <ClCompile Include="src\Torre.cpp" />
+    <ClCompile Include="src\Alfil.cpp" />
+    <ClCompile Include="src\Rey.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Peon.h" />
@@ -18,5 +20,7 @@
     <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\Reina.h" />
     <ClInclude Include="src\Torre.h" />
+    <ClInclude Include="src\Alfil.h" />
+    <ClInclude Include="src\Rey.h" />
   </ItemGroup>
 </Project>
