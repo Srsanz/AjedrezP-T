@@ -15,6 +15,6 @@ void Reina::dibuja() {
 }
 
 
-bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
+/*bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
 	return true;
-}
+}*/
