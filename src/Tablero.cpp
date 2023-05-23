@@ -15,7 +15,7 @@ Tablero::~Tablero()
 	/*
 	for (int y = 0; y < 8; y++) {
 		for (int x = 0; x < 8; x++) {
-			delete board[x][y];
+			delete tablero[x][y];
 		}
 	}
 	*/
@@ -47,10 +47,10 @@ void Tablero::dibuja() {
 			glEnd();
 
 			// Dibujar la pieza en la casilla
-			if (board[x][y] != nullptr) {
+			if (tablero[x][y] != nullptr) {
 				glPushMatrix();
 				glTranslatef(x * cellSize, y * cellSize, 0.1);
-				board[x][y]->dibuja();
+				tablero[x][y]->dibuja();
 				glPopMatrix();
 			}
 		}
@@ -71,26 +71,26 @@ void Tablero::inicializa() {
 	
 
 
-	board[1][0] = new Caballo('b');
-	board[6][0] = new Caballo('b');
-	board[1][7] = new Caballo('n');
-	board[6][7] = new Caballo('n');
-	board[4][0] = new Reina('b');
-	board[4][7] = new Reina('n');
-	board[0][0] = new Torre('b');
-	board[7][0] = new Torre('b');
-	board[0][7] = new Torre('n');
-	board[7][7] = new Torre('n');
-	board[3][0] = new Rey('b');
-	board[3][7] = new Rey('n');
-	board[2][0] = new Alfil('b');
-	board[5][0] = new Alfil('b');
-	board[2][7] = new Alfil('n');
-	board[5][7] = new Alfil('n');
+	tablero[1][0] = new Caballo('b');
+	tablero[6][0] = new Caballo('b');
+	tablero[1][7] = new Caballo('n');
+	tablero[6][7] = new Caballo('n');
+	tablero[4][0] = new Reina('b');
+	tablero[4][7] = new Reina('n');
+	tablero[0][0] = new Torre('b');
+	tablero[7][0] = new Torre('b');
+	tablero[0][7] = new Torre('n');
+	tablero[7][7] = new Torre('n');
+	tablero[3][0] = new Rey('b');
+	tablero[3][7] = new Rey('n');
+	tablero[2][0] = new Alfil('b');
+	tablero[5][0] = new Alfil('b');
+	tablero[2][7] = new Alfil('n');
+	tablero[5][7] = new Alfil('n');
 
 	for (int i = 0; i < 8; i++) {
-		board[i][1] = new Peon('b'); //peones blancos en toda la fila 1
-		board[i][6] = new Peon('n'); //peones negros en toda la fila 6
+		tablero[i][1] = new Peon('b'); //peones blancos en toda la fila 1
+		tablero[i][6] = new Peon('n'); //peones negros en toda la fila 6
 	}
 }
 
@@ -108,17 +108,17 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			xInicial = casillaX;
 			yInicial = casillaY;
 
-			if (board[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
+			if (tablero[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
 				xInicial = -1;
 				yInicial = -1;
 			}
-			else if(board[xInicial][yInicial] != nullptr){
-				if (turno % 2 != 0 && board[xInicial][yInicial]->obtenerColor() != 'b') {
+			else if(tablero[xInicial][yInicial] != nullptr){
+				if (turno % 2 != 0 && tablero[xInicial][yInicial]->obtenerColor() != 'b') {
 					xInicial = -1;
 					yInicial = -1;
 				}
 
-				if (turno % 2 == 0 && board[xInicial][yInicial]->obtenerColor() != 'n') {
+				if (turno % 2 == 0 && tablero[xInicial][yInicial]->obtenerColor() != 'n') {
 					xInicial = -1;
 					yInicial = -1;
 				}
@@ -131,8 +131,8 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 		else {
 			xFinal = casillaX;
 			yFinal = casillaY;
-			char color = board[xInicial][yInicial]->obtenerColor();
-			TipoPieza tipo= board[xInicial][yInicial]->obtenerTipo();
+			char color = tablero[xInicial][yInicial]->obtenerColor();
+			TipoPieza tipo= tablero[xInicial][yInicial]->obtenerTipo();
 			
 			//if para ver si la casilla está ocupada
 			bool ocupado;
@@ -142,48 +142,48 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 
 			if (x == 0) {
 				for (++yI; yI < yFinal; yI++) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 				for (yI-=2; yI > yFinal; yI--) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 			}
 			else if (y == 0) {
 				for (++xI; xI < xFinal; xI++) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 				for (xI-=2; xI > xFinal; xI--) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 			}
 			else if (x == y) {
 				for (++yI, ++xI; yI < yFinal; yI++, xI++) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 				for (yI-=2,xI-=2; yI > yFinal; yI--,xI--) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 			}
 			else if (x == -y) {
 				for (++yI,--xI; yI < yFinal; yI++, xI--) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 				for (yI-=2,xI+=2; yI > yFinal; yI--, xI++) {
-					if (board[xI][yI] != nullptr) return;
+					if (tablero[xI][yI] != nullptr) return;
 				}
 			}
 
-			if (board[xFinal][yFinal] == nullptr) {
+			if (tablero[xFinal][yFinal] == nullptr) {
 				ocupado = 0;
 			}
-			else if (board[xFinal][yFinal] != nullptr) {
+			else if (tablero[xFinal][yFinal] != nullptr) {
 				ocupado = 1;
-				char color2 = board[xFinal][yFinal]->obtenerColor();
+				char color2 = tablero[xFinal][yFinal]->obtenerColor();
 				if (color == color2) return;
 			}
 
 
-			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal, ocupado)) {
+			if (!tablero[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal, ocupado)) {
 				//return; // Movimiento inválido, salir de la función
 				xInicial = -1;
 				yInicial = -1;
@@ -192,29 +192,29 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			}
 			else { // La casilla está vacía
 				// Mover el peón a la posición final
-				delete board[xFinal][yFinal];
-				board[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
-				delete board[xInicial][yInicial];
-				board[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+				delete tablero[xFinal][yFinal];
+				tablero[xFinal][yFinal] = nullptr; // Eliminar la pieza de la posición final si existe
+				delete tablero[xInicial][yInicial];
+				tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
 
 				if (tipo == peon) {
-					board[xFinal][yFinal] = new Peon(color);
+					tablero[xFinal][yFinal] = new Peon(color);
 				}
 				else if (tipo == caballo) {
-					board[xFinal][yFinal] = new Caballo(color);
+					tablero[xFinal][yFinal] = new Caballo(color);
 				}
 				else if (tipo == reina) {
-					board[xFinal][yFinal] = new Reina(color);
+					tablero[xFinal][yFinal] = new Reina(color);
 				}
 				else if (tipo == torre) {
-					board[xFinal][yFinal] = new Torre(color);
+					tablero[xFinal][yFinal] = new Torre(color);
 				}
 				else if (tipo == rey) {
-					board[xFinal][yFinal] = new Rey(color);
+					tablero[xFinal][yFinal] = new Rey(color);
 				}
 
 				else if (tipo == alfil) {
-					board[xFinal][yFinal] = new Alfil(color);
+					tablero[xFinal][yFinal] = new Alfil(color);
 				}
 
 				
