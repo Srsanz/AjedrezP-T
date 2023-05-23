@@ -15,7 +15,7 @@ public:
 		// Inicializacion del tablero	
 		for (int y = 0; y < 8; y++) {
 			for (int x = 0; x < 8; x++) {
-				board[x][y] = nullptr;
+				tablero[x][y] = nullptr;
 			}
 		}
 	};
@@ -32,7 +32,7 @@ public:
 	}
 	
 private:
-	Pieza* board[8][8];
+	Pieza* tablero[8][8];
 	int turno;
 	// Creacion matriz de piezas
 	
