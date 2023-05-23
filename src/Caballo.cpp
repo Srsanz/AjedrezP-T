@@ -16,5 +16,33 @@ void Caballo::dibuja() {
 
 
 bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocupado) {
-	return true;
+	// Verificar si el movimiento es válido para un caballo
+
+//unsigned int x = xFinal - xInicial;
+	int x = xFinal - xInicial;
+	int y = yFinal - yInicial;
+
+	if (x < 0) {
+		x = xInicial - xFinal;
+	}
+
+	if (y < 0) {
+		y = yInicial - yFinal;
+	}
+
+
+	// Si el caballo es blanco
+	if (color == 'b') {
+		if (((x + y) == 3) && (x != 3) && (y != 3)) {
+			return true;
+		}
+	}
+	// Si el caballo es negro
+	if (color == 'n') {
+		if (((x + y) == 3) && (x == 3) && (y == 3)) {
+			return true;
+		}
+	}
+
+	return false;
 }
