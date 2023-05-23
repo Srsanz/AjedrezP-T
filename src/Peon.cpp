@@ -31,7 +31,7 @@ bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupad
 			return true;
 		}
 		// Movimiento válido: captura diagonal a la derecha
-		else if (yFinal == yInicial + 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)) {
+		else if (yFinal == yInicial + 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)&&ocupado) {
 			return true;
 		}
 	}
@@ -46,7 +46,7 @@ bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupad
 			return true;
 		}
 		// Movimiento válido: captura diagonal a la izquierda
-		else if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)) {
+		else if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1)&&ocupado) {
 			return true;
 		}
 	}
