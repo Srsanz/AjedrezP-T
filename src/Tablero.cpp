@@ -34,10 +34,10 @@ void Tablero::dibuja() {
 	for (int y = 0; y < 8; y++) {
 		for (int x = 0; x < 8; x++) {
 			if ((x + y) % 2 == 0) {
-				glColor3ub(156, 208, 224); // Color clarito
+				glColor3ub(93, 155, 155); // Color oscurito
 			}
 			else {
-				glColor3ub(93, 155, 155); // Color oscurito
+				glColor3ub(156, 208, 224); // Color clarito
 			}
 			glBegin(GL_QUADS);
 			glVertex2i(x * cellSize, y * cellSize);
@@ -75,14 +75,14 @@ void Tablero::inicializa() {
 	tablero[6][0] = new Caballo('b');
 	tablero[1][7] = new Caballo('n');
 	tablero[6][7] = new Caballo('n');
-	tablero[4][0] = new Reina('b');
-	tablero[4][7] = new Reina('n');
+	tablero[3][0] = new Reina('b');
+	tablero[3][7] = new Reina('n');
 	tablero[0][0] = new Torre('b');
 	tablero[7][0] = new Torre('b');
 	tablero[0][7] = new Torre('n');
 	tablero[7][7] = new Torre('n');
-	tablero[3][0] = new Rey('b');
-	tablero[3][7] = new Rey('n');
+	tablero[4][0] = new Rey('b');
+	tablero[4][7] = new Rey('n');
 	tablero[2][0] = new Alfil('b');
 	tablero[5][0] = new Alfil('b');
 	tablero[2][7] = new Alfil('n');
