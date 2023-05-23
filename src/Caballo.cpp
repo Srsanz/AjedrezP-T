@@ -39,7 +39,7 @@ bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocup
 	}
 	// Si el caballo es negro
 	if (color == 'n') {
-		if (((x + y) == 3) && (x == 3) && (y == 3)) {
+		if (((x + y) == 3) && (x != 3) && (y != 3)) {
 			return true;
 		}
 	}
