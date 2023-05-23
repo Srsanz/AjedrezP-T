@@ -28,7 +28,7 @@ bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupa
 	}
 	// Si la reina es negra
 	if (color == 'n') {
-		if (x == 0 || y == 0 || x == y) {
+		if (x == 0 || y == 0 || x == y|| x == -y) {
 			return true;
 		}
 	}
