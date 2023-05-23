@@ -68,12 +68,7 @@ void Tablero::inicializa() {
 	z_ojo = 30; // habria q mirarlo bien
 
 
-	// Inicializacion del tablero	
-	for (int y = 0; y < 8; y++) {
-		for (int x = 0; x < 8; x++) {
-			board[x][y] = nullptr;
-		}
-	}
+	
 
 
 	board[1][0] = new Caballo('b');
@@ -112,10 +107,26 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			// Establecer la posición inicial del peón
 			xInicial = casillaX;
 			yInicial = casillaY;
+
 			if (board[xInicial][yInicial] == nullptr) { //La casilla incial no tiene pieza
 				xInicial = -1;
 				yInicial = -1;
 			}
+			else if(board[xInicial][yInicial] != nullptr){
+				if (turno % 2 != 0 && board[xInicial][yInicial]->obtenerColor() != 'b') {
+					xInicial = -1;
+					yInicial = -1;
+				}
+
+				if (turno % 2 == 0 && board[xInicial][yInicial]->obtenerColor() != 'n') {
+					xInicial = -1;
+					yInicial = -1;
+				}
+
+			}
+
+			
+			
 		}
 		else {
 			xFinal = casillaX;
@@ -212,7 +223,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				yInicial = -1;
 				xFinal = -1;
 				yFinal = -1;
-
+				turno++;
 				// Redibujar el tablero con el peón movido
 				glutPostRedisplay();
 			}

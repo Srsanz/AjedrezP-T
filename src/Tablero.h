@@ -11,7 +11,15 @@ class Tablero
 
 public:
 	// Constructor en blanco
-	//Tablero() {};
+	Tablero():turno(1){
+		// Inicializacion del tablero	
+		for (int y = 0; y < 8; y++) {
+			for (int x = 0; x < 8; x++) {
+				board[x][y] = nullptr;
+			}
+		}
+	};
+
 	~Tablero();
 
 	void dibuja();
@@ -25,6 +33,7 @@ public:
 	
 private:
 	Pieza* board[8][8];
+	int turno;
 	// Creacion matriz de piezas
 	
 
