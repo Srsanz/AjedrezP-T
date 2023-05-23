@@ -106,8 +106,16 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yFinal = casillaY;
 			char color = board[xInicial][yInicial]->obtenerColor();
 			TipoPieza tipo= board[xInicial][yInicial]->obtenerTipo();
+			bool ocupado;
+			if (board[xInicial][yInicial] == nullptr) {
+				ocupado = 0;
+			}
+			else if (board[xInicial][yInicial] != nullptr) {
+				ocupado = 1;
+			}
 
-			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal)) {
+
+			if (!board[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal, ocupado)) {
 				//return; // Movimiento inválido, salir de la función
 				xInicial = -1;
 				yInicial = -1;
