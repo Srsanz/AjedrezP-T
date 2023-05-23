@@ -115,6 +115,8 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			}
 			else if (board[xInicial][yInicial] != nullptr) {
 				ocupado = 1;
+				char color2 = board[xFinal][yFinal]->obtenerColor();
+				if (color == color2) return;
 			}
 
 
