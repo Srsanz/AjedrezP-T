@@ -38,11 +38,11 @@ bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupad
 	// Si el peón es negro
 	else if (color == 'n') {
 		// Movimiento válido: mover hacia adelante una casilla
-		if (yFinal == yInicial - 1 && xFinal == xInicial) {
+		if (yFinal == yInicial - 1 && xFinal == xInicial && !ocupado) {
 			return true;
 		}
 		// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
-		else if (yFinal == yInicial - 2 && xFinal == xInicial && yInicial == 6) {
+		else if (yFinal == yInicial - 2 && xFinal == xInicial && yInicial == 6 && !ocupado) {
 			return true;
 		}
 		// Movimiento válido: captura diagonal a la izquierda
