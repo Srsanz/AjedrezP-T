@@ -3,6 +3,7 @@
 #include "Pieza.h"
 #include "Caballo.h"
 #include "Reina.h"
+#include "Torre.h"
 
 Tablero::~Tablero()
 {
@@ -79,6 +80,10 @@ void Tablero::inicializa() {
 	board[6][7] = new Caballo('n');
 	board[4][0] = new Reina('b');
 	board[4][7] = new Reina('n');
+	board[0][0] = new Torre('b');
+	board[7][0] = new Torre('b');
+	board[0][7] = new Torre('n');
+	board[7][7] = new Torre('n');
 
 	for (int i = 0; i < 8; i++) {
 		board[i][1] = new Peon('b'); //peones blancos en toda la fila 1
@@ -144,6 +149,9 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				}
 				else if (tipo == reina) {
 					board[xFinal][yFinal] = new Reina(color);
+				}
+				else if (tipo == torre) {
+					board[xFinal][yFinal] = new Torre(color);
 				}
 
 				
