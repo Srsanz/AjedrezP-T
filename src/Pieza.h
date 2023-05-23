@@ -4,7 +4,11 @@
 enum TipoPieza {
     None,
     caballo,
-    peon
+    peon,
+    torre,
+    rey,
+    reina,
+    alfil
 };
 
 
