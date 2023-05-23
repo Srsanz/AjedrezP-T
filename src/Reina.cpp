@@ -15,6 +15,25 @@ void Reina::dibuja() {
 }
 
 
-/*bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
-	return true;
-}*/
+bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) {
+	
+	int x = xFinal - xInicial;
+	int y = yFinal - yInicial;
+
+	// Si la reina es blanca
+	if (color == 'b') {
+		if (x == 0 || y == 0 || x == y) {
+			return true;
+		}
+	}
+	// Si la reina es negra
+	if (color == 'n') {
+		if (x == 0 || y == 0 || x == y) {
+			return true;
+		}
+	}
+
+	return false;
+	
+	
+}
