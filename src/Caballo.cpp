@@ -15,6 +15,6 @@ void Caballo::dibuja() {
 }
 
 
-bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal) {
+bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocupado) {
 	return true;
 }
