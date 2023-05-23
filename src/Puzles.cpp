@@ -12,7 +12,7 @@ void Puzles::dibuja()
 
 		ETSIDI::setTextColor(1, 1, 0);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 16);
-		ETSIDI::printxy("Ajedrez", -5, 9);
+		ETSIDI::printxy("Puzles", -5, 9);
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
 		ETSIDI::printxy("PULSE LA TECLA -1- PARA IR AL PUZLE 1", -10, 7);
@@ -28,7 +28,7 @@ void Puzles::dibuja()
 	{
 		tablero2.dibuja();
 	}
-	else if (estado == PUZLE1)
+	else if (estado == PUZLE3)
 	{
 		tablero3.dibuja();
 	}

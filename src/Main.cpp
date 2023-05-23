@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Coordinador.h"
 #include "Tablero.h"
-#include "Peon.h"
+
 
 using namespace std;
 
