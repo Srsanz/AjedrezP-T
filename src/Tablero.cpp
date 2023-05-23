@@ -2,6 +2,7 @@
 #include "Peon.h"
 #include "Pieza.h"
 #include "Caballo.h"
+#include "Reina.h"
 
 Tablero::~Tablero()
 {
@@ -76,6 +77,8 @@ void Tablero::inicializa() {
 	board[6][0] = new Caballo('b');
 	board[1][7] = new Caballo('n');
 	board[6][7] = new Caballo('n');
+	board[4][0] = new Reina('b');
+	board[4][7] = new Reina('n');
 
 	for (int i = 0; i < 8; i++) {
 		board[i][1] = new Peon('b'); //peones blancos en toda la fila 1
@@ -128,6 +131,10 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				else if (tipo == caballo) {
 					board[xFinal][yFinal] = new Caballo(color);
 				}
+				else if (tipo == reina) {
+					board[xFinal][yFinal] = new Reina(color);
+				}
+
 				
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
