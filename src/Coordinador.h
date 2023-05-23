@@ -1,5 +1,6 @@
 #pragma once
 #include "Tablero.h"
+#include "Puzles.h"
 
 
 class Coordinador
@@ -16,9 +17,10 @@ public:
 
 protected:
 
-	enum Estado { INICIO, PARTIDA, FIN };
+	enum Estado { INICIO, PARTIDA, FIN, PUZLES };
 	Estado estado;
 
 	Tablero tablero;
+	Puzles puzles;
 };
 

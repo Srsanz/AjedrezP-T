@@ -15,13 +15,18 @@ void Coordinador::dibuja()
 		ETSIDI::printxy("Ajedrez", -5, 9);
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
-		ETSIDI::printxy("PULSE LA TECLA -E- PARA EMPEZAR", -5, 7);
-		ETSIDI::printxy("PULSE LA TECLA -S- PARA SALIR", -5, 5);
+		ETSIDI::printxy("PULSE LA TECLA -E- PARA EMPEZAR", -10, 7);
+		ETSIDI::printxy("PULSE LA TECLA -P- PARA IR A LOS PUZLES", -10, 5);
+		ETSIDI::printxy("PULSE LA TECLA -S- PARA SALIR", -10, 3);
 		ETSIDI::printxy("P&T Ajedrez", 2, 1);
 	}
 	else if (estado == PARTIDA)
 	{
 		tablero.dibuja();
+	}
+	else if (estado == PUZLES)
+	{
+		puzles.dibuja();
 	}
 	else if (estado == FIN)
 	{
@@ -46,26 +51,36 @@ void Coordinador::tecla(unsigned char key)
 		}
 		if (key == 's')
 			exit(0);
+		if (key == 'p')
+		{
+			puzles.dibuja();
+			estado = PUZLES;
+		}
 	}
 	else if (estado == PARTIDA)
 	{
 		
-		/*glutMouseFunc([](int button, int state, int x, int y) {
-			Tablero::confirmaMouse(button, state, x, y, tablero);
-			});*/
 	}
 	else if (estado == FIN)
 	{
 		if (key == 'c')
 			estado = INICIO;
 	}
+	else if (estado == PUZLES) {
+		puzles.tecla(key);
+	}
 	
 
 }
 
 void Coordinador:: onMouseClick(int button, int state, int x, int y) {
+	if (estado == PARTIDA) {
+		tablero.onMouseClick(button, state, x, y);
+	}
+	if (estado == PUZLES) {
+		puzles.onMouseClick(button, state, x, y);
+	}
 
-	tablero.onMouseClick(button, state,x,y);
 
 	glutPostRedisplay();
 }

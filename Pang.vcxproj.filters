@@ -11,6 +11,10 @@
     <ClCompile Include="src\Torre.cpp" />
     <ClCompile Include="src\Alfil.cpp" />
     <ClCompile Include="src\Rey.cpp" />
+    <ClCompile Include="src\Puzles.cpp" />
+    <ClCompile Include="src\Puzle1.cpp" />
+    <ClCompile Include="src\Puzle2.cpp" />
+    <ClCompile Include="src\Puzle3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Peon.h" />
@@ -22,5 +26,9 @@
     <ClInclude Include="src\Torre.h" />
     <ClInclude Include="src\Alfil.h" />
     <ClInclude Include="src\Rey.h" />
+    <ClInclude Include="src\Puzles.h" />
+    <ClInclude Include="src\Puzle1.h" />
+    <ClInclude Include="src\Puzle2.h" />
+    <ClInclude Include="src\Puzle3.h" />
   </ItemGroup>
 </Project>

@@ -25,6 +25,10 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Peon.cpp" />
     <ClCompile Include="src\Pieza.cpp" />
+    <ClCompile Include="src\Puzle1.cpp" />
+    <ClCompile Include="src\Puzle2.cpp" />
+    <ClCompile Include="src\Puzle3.cpp" />
+    <ClCompile Include="src\Puzles.cpp" />
     <ClCompile Include="src\Reina.cpp" />
     <ClCompile Include="src\Rey.cpp" />
     <ClCompile Include="src\Tablero.cpp" />
@@ -35,6 +39,10 @@
     <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\Peon.h" />
     <ClInclude Include="src\Pieza.h" />
+    <ClInclude Include="src\Puzle1.h" />
+    <ClInclude Include="src\Puzle2.h" />
+    <ClInclude Include="src\Puzle3.h" />
+    <ClInclude Include="src\Puzles.h" />
     <ClInclude Include="src\Reina.h" />
     <ClInclude Include="src\Rey.h" />
     <ClInclude Include="src\Tablero.h" />

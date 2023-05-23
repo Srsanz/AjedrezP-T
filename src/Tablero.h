@@ -24,7 +24,7 @@ public:
 
 	void dibuja();
 	void inicializa();
-	void mueve(char letra);
+	//void mueve(char letra);
 	void onMouseClick(int button, int state, int x, int y); //Obtiene la posicion del raton y mueve pieza
 	static void confirmaMouse(int button, int state, int x, int y, Tablero* tablero)
 	{
