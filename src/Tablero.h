@@ -1,6 +1,8 @@
 #pragma once
 #include "Peon.h"
 #include "Pieza.h"
+#include <iostream>
+using namespace std;
 
 const int piezeSize = 1;
 const int cellSize = 5;
@@ -51,6 +53,6 @@ public:
 	friend class Caballo;
 	friend class Pieza;
 
-
+	bool estaReyEnJaque(Tablero& t, char colorRey,bool ocupado);
 };
 
