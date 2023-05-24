@@ -140,7 +140,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			int y = yFinal - yInicial;
 			int xI = xInicial, yI = yInicial;
 
-			if (x == 0) {
+			/*if (x == 0) {
 				for (++yI; yI < yFinal; yI++) {
 					if (tablero[xI][yI] != nullptr) return;
 				}
@@ -171,7 +171,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				for (yI-=2,xI+=2; yI > yFinal; yI--, xI++) {
 					if (tablero[xI][yI] != nullptr) return;
 				}
-			}
+			}*/
 
 			if (tablero[xFinal][yFinal] == nullptr) {
 				ocupado = 0;
@@ -183,7 +183,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			}
 
 
-			if (!tablero[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal, ocupado)) {
+			if (!tablero[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal, ocupado, *this)) {
 				//return; // Movimiento inválido, salir de la función
 				xInicial = -1;
 				yInicial = -1;

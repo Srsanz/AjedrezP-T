@@ -15,7 +15,7 @@ void Caballo::dibuja() {
 }
 
 
-bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocupado) {
+bool Caballo::mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocupado, Tablero& t) {
 	// Verificar si el movimiento es válido para un caballo
 
 //unsigned int x = xFinal - xInicial;

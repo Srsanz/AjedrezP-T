@@ -15,10 +15,44 @@ void Reina::dibuja() {
 }
 
 
-bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) {
+bool Reina::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado, Tablero& t) {
 	
 	int x = xFinal - xInicial;
 	int y = yFinal - yInicial;
+	int xI = xInicial, yI = yInicial;
+
+	if (x == 0) {
+		for (++yI; yI < yFinal; yI++) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+		for (yI -= 2; yI > yFinal; yI--) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+	}
+	else if (y == 0) {
+		for (++xI; xI < xFinal; xI++) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+		for (xI -= 2; xI > xFinal; xI--) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+	}
+	else if (x == y) {
+		for (++yI, ++xI; yI < yFinal; yI++, xI++) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+		for (yI -= 2, xI -= 2; yI > yFinal; yI--, xI--) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+	}
+	else if (x == -y) {
+		for (++yI, --xI; yI < yFinal; yI++, xI--) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+		for (yI -= 2, xI += 2; yI > yFinal; yI--, xI++) {
+			if (t.tablero[xI][yI] != nullptr) return false;
+		}
+	}
 
 	// Si la reina es blanca
 	if (color == 'b') {

@@ -2,6 +2,7 @@
 #include "Pieza.h"
 #include "ETSIDI.h"
 #include "freeglut.h"
+#include "Tablero.h"
 using ETSIDI::SpriteSequence;
 
 class Torre :public Pieza
@@ -27,7 +28,7 @@ public:
 	void dibuja() override;
 
 	// PRUBEBA
-	bool mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) override;
+	bool mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado, Tablero& t) override;
 
 };
 

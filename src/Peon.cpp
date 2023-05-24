@@ -15,10 +15,12 @@ void Peon:: dibuja() {
 }
 
 
-bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) {
+bool Peon::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado, Tablero& t) {
 
 	// Verificar si el movimiento es válido para un peón
 	//bool movimientoValido = false;
+
+	
 
 	// Si el peón es blanco
 	if (color == 'b') {

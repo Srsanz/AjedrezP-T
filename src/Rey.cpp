@@ -16,7 +16,7 @@ void Rey::dibuja() {
 }
 
 
-bool Rey::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) {
+bool Rey::mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado, Tablero& t) {
 
 	int posx = xFinal - xInicial;
 	int posy = yFinal - yInicial;

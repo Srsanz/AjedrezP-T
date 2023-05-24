@@ -8,6 +8,19 @@ const int cellSize = 5;
 
 class Tablero
 {
+private:
+	Pieza* tablero[8][8];
+	int turno;
+	// Creacion matriz de piezas
+
+
+	// Creacion de las piezas
+	// Peon peon1;
+
+
+	float x_ojo;
+	float y_ojo;
+	float z_ojo;
 
 public:
 	// Constructor en blanco
@@ -26,24 +39,18 @@ public:
 	void inicializa();
 	//void mueve(char letra);
 	void onMouseClick(int button, int state, int x, int y); //Obtiene la posicion del raton y mueve pieza
-	static void confirmaMouse(int button, int state, int x, int y, Tablero* tablero)
+	static void confirmaMouse(int button, int state, int x, int y, Tablero& tablero)
 	{
-		tablero->onMouseClick(button, state, x, y);
+		tablero.onMouseClick(button, state, x, y);
 	}
-	
-private:
-	Pieza* tablero[8][8];
-	int turno;
-	// Creacion matriz de piezas
-	
+	friend class Peon;
+	friend class Reina;
+	friend class Rey;
+	friend class Torre;
+	friend class Alfil;
+	friend class Caballo;
+	friend class Pieza;
 
-	// Creacion de las piezas
-	// Peon peon1;
-
-
-	float x_ojo;
-	float y_ojo;
-	float z_ojo;
 
 };
 

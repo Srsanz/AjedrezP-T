@@ -2,6 +2,7 @@
 #include "Pieza.h"
 #include "ETSIDI.h"
 #include "freeglut.h"
+#include "Tablero.h"
 using ETSIDI::SpriteSequence;
 
 
@@ -35,7 +36,7 @@ public:
 	void dibuja() override;
 
 
-	bool mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado) override;
+	bool mover(int xInicial, int yInicial, int xFinal, int yFinal, bool ocupado, Tablero& t) override;
 
 
 

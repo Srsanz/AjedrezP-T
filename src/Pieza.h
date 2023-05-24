@@ -1,5 +1,6 @@
 #pragma once
 
+class Tablero;
 
 enum TipoPieza {
     None,
@@ -23,7 +24,7 @@ public:
     Pieza() : tipo(TipoPieza::None), x(0), y(0) {};
 
    virtual void dibuja() {};
-   virtual bool mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocupado){
+   virtual bool mover(int xInicial, int yInicial, int xFinal, int yFinal,bool ocupado, Tablero& t){
        return true;
    };
    char obtenerColor() const;
