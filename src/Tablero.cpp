@@ -183,7 +183,9 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				}
 
 				bool reyenjaque = estaReyEnJaque(*this, color, ocupado);
-				if (reyenjaque) {}
+				if (reyenjaque) {
+					cout << "JAQUE";
+				}
 
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
@@ -247,23 +249,27 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 								return true;
 							}
 						}
-
 						break;
+
 					case caballo:
-						// Implementa la lógica de captura del caballo según las reglas del ajedrez
-						// ...
+							if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+								return true;
+							}
 						break;
 					case alfil:
-						// Implementa la lógica de captura del alfil según las reglas del ajedrez
-						// ...
+						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+							return true;
+						}
 						break;
 					case torre:
-						// Implementa la lógica de captura de la torre según las reglas del ajedrez
-						// ...
+						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+							return true;
+						}
 						break;
 					case reina:
-						// Implementa la lógica de captura de la reina según las reglas del ajedrez
-						// ...
+						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+							return true;
+						}
 						break;
 					case rey:
 						// No debería haber otro rey en el tablero
