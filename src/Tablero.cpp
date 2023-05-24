@@ -123,11 +123,9 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 					yInicial = -1;
 				}
 
-			}
-
-			
-			
+			}	
 		}
+
 		else {
 			xFinal = casillaX;
 			yFinal = casillaY;
@@ -139,39 +137,6 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			int x = xFinal - xInicial;
 			int y = yFinal - yInicial;
 			int xI = xInicial, yI = yInicial;
-
-			/*if (x == 0) {
-				for (++yI; yI < yFinal; yI++) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-				for (yI-=2; yI > yFinal; yI--) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-			}
-			else if (y == 0) {
-				for (++xI; xI < xFinal; xI++) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-				for (xI-=2; xI > xFinal; xI--) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-			}
-			else if (x == y) {
-				for (++yI, ++xI; yI < yFinal; yI++, xI++) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-				for (yI-=2,xI-=2; yI > yFinal; yI--,xI--) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-			}
-			else if (x == -y) {
-				for (++yI,--xI; yI < yFinal; yI++, xI--) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-				for (yI-=2,xI+=2; yI > yFinal; yI--, xI++) {
-					if (tablero[xI][yI] != nullptr) return;
-				}
-			}*/
 
 			if (tablero[xFinal][yFinal] == nullptr) {
 				ocupado = 0;
