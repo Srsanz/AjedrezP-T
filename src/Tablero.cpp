@@ -205,16 +205,16 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 
 
 bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
-	int filaRey = -1;
-	int columnaRey = -1;
+	int yRey = -1;
+	int xRey = -1;
 
 	// Encontrar la posición del rey del color dado en el tablero
-	for (int fila = 0; fila < 8; ++fila) {
-		for (int columna = 0; columna < 8; ++columna) {
-			if (t.tablero[fila][columna] != nullptr) {
-				if (t.tablero[fila][columna]->obtenerTipo() == rey && t.tablero[fila][columna]->obtenerColor() != colorpieza) {
-					filaRey = fila;
-					columnaRey = columna;
+	for (int columna = 0; columna < 8; ++columna) {
+		for (int fila = 0; fila < 8; ++fila) {
+			if (t.tablero[columna][fila] != nullptr) {
+				if (t.tablero[columna][fila]->obtenerTipo() == rey && t.tablero[columna][fila]->obtenerColor() != colorpieza) {
+					yRey = fila;
+					xRey = columna;
 					break;
 
 				}
@@ -225,40 +225,25 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 	// Verificar si alguna pieza enemiga amenaza al rey
 	for (int fila = 0; fila < 8; ++fila) {
 		for (int columna = 0; columna < 8; ++columna) {
-			if (t.tablero[fila][columna] != nullptr) {
-				Pieza* pieza = t.tablero[fila][columna];
+			if (t.tablero[columna][fila] != nullptr) {
+				Pieza* pieza = t.tablero[columna][fila];
 
 				if (pieza->color == colorpieza) {
 					// Verificar si la pieza puede capturar al rey
 					bool capturaPosible = false;
 					switch (pieza->tipo) {
 					case peon:
-						if (colorpieza == 'b') {
-							// Movimiento válido: mover hacia adelante una casilla
-							if (yFinal == yInicial + 1 && xFinal == xInicial && !ocupado) {
-								return true;
-							}
-							// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
-							else if (yFinal == yInicial + 2 && xFinal == xInicial && yInicial == 1 && !ocupado) {
-								return true;
-							}
-							// Movimiento válido: captura diagonal a la derecha
-							else if (yFinal == yInicial + 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1) && ocupado) {
+
+						if (colorpieza == 'n') {
+							// Movimiento válido: captura diagonal a la derecha e izuqierda
+							if (yRey == fila - 1 && (xRey == columna + 1 || xRey == columna - 1)) {
 								return true;
 							}
 						}
 						// Si el peón es negro
-						else if (colorpieza == 'n') {
-							// Movimiento válido: mover hacia adelante una casilla
-							if (yFinal == yInicial - 1 && xFinal == xInicial && !ocupado) {
-								return true;
-							}
-							// Movimiento válido: mover hacia adelante dos casillas desde la posición inicial
-							else if (yFinal == yInicial - 2 && xFinal == xInicial && yInicial == 6 && !ocupado) {
-								return true;
-							}
-							// Movimiento válido: captura diagonal a la izquierda
-							else if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1) && ocupado) {
+						else if (colorpieza == 'b') {
+							// Movimiento válido: captura diagonal a la izquierda y derecha
+							if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1) && ocupado) {
 								return true;
 							}
 						}
