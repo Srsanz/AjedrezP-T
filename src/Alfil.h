@@ -10,8 +10,8 @@ using ETSIDI::SpriteSequence;
 
 class Alfil : public Pieza
 {
-	SpriteSequence sprite1{ "imagenes/alfilblanco.png", 1 };
-	SpriteSequence sprite2{ "imagenes/alfilnegro.png", 1 };
+	SpriteSequence sprite1{ "imagenes/alfilblanco_.png", 1 };
+	SpriteSequence sprite2{ "imagenes/alfilnegro_.png", 1 };
 	//int x, y;
 	//int numero;
 

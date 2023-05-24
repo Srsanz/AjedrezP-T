@@ -10,8 +10,8 @@ using ETSIDI::SpriteSequence;
 
 class Peon : public Pieza
 {
-	SpriteSequence sprite1{ "imagenes/peonblanco.png", 1 };
-	SpriteSequence sprite2{ "imagenes/peonnegro.png", 1 };
+	SpriteSequence sprite1{ "imagenes/peonblanco_.png", 1 };
+	SpriteSequence sprite2{ "imagenes/peonnegro_.png", 1 };
 	//int x, y;
 	//int numero;
 

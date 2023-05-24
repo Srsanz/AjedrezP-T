@@ -7,8 +7,8 @@ using ETSIDI::SpriteSequence;
 
 class Torre :public Pieza
 {
-	SpriteSequence sprite1{ "imagenes/torreblanca.png", 1 };
-	SpriteSequence sprite2{ "imagenes/torrenegra.png", 1 };
+	SpriteSequence sprite1{ "imagenes/torreblanca_.png", 1 };
+	SpriteSequence sprite2{ "imagenes/torrenegra_.png", 1 };
 public:
 	Torre(char _color) {
 		color = _color;
