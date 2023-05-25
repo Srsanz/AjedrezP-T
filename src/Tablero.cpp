@@ -98,10 +98,12 @@ int xInicial = -1, yInicial = -1;
 int xFinal = -1, yFinal = -1;
 
 void Tablero::onMouseClick(int button, int state, int x, int y) {
+	
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 		// Calcular la posición del clic en términos de celdas del tablero
 		int casillaX = x / 75;
 		int casillaY = (600 - y) / 75;  // Convertir la coordenada y
+
 
 		if (xInicial == -1 && yInicial == -1) {
 			// Establecer la posición inicial del peón
@@ -131,6 +133,11 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yFinal = casillaY;
 			char color = tablero[xInicial][yInicial]->obtenerColor();
 			TipoPieza tipo= tablero[xInicial][yInicial]->obtenerTipo();
+			/*
+			if (!estaReyEnJaqueMate(*this, color)) {
+				cout << "jaque mate" << endl;
+			}
+			*/
 			
 			//if para ver si la casilla está ocupada
 			bool ocupado;
@@ -457,5 +464,38 @@ void Tablero::dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int
 
 }
 
+/*
+bool Tablero::estaReyEnJaqueMate(const Tablero& t, char colorpieza) {
+	
+	
+	for (int xInicial = 0; xInicial < 8; xInicial++) {
+		for (int yInicial = 0; yInicial < 8; yInicial++) {
+			for (int xFinal = 0; xFinal < 8; xFinal++) {
+				for (int yFinal = 0; yFinal < 8; yFinal++) {
+					if (tablero[xInicial][yInicial] != nullptr) {
+						if (tablero[xInicial][yInicial]->obtenerColor() == colorpieza) {
+							if (evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
+								// mov invalido
+							}
+							if (!evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
+								return true;
+								// mov valido
+							}
+						}
+					}
+									
+				}
+			}
+		}
+	}
+
+	return false;
 
 
+
+}
+
+
+
+
+*/
