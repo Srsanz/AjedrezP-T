@@ -29,6 +29,7 @@ public:
    };
    char obtenerColor() const;
    TipoPieza obtenerTipo();
+
 };
 
 

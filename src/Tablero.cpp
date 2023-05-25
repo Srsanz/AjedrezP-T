@@ -320,21 +320,25 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 
 	TipoPieza tipo = tablero[xInicial][yInicial]->obtenerTipo();
 	
+
 	bool ocupado;
 
 	bool movposible = false;
 	char colorturno = tablero[xInicial][yInicial]->obtenerColor();
+	TipoPieza tipo2;
 
 	for (int columna = 0; columna < 8; ++columna) {
 		for (int fila = 0; fila < 8; ++fila) {
 			if (tablero[columna][fila] == nullptr) {
 				ocupado = false;
+				tipo2 = None;
 			}
 			else if (tablero[columna][fila] != nullptr) {
 				ocupado = true;
+				tipo2 = tablero[columna][fila]->obtenerTipo();
 			}
 
-			switch (tipo) {
+			switch (tipo2) {
 			case peon:
 				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
 					
@@ -348,11 +352,14 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 					// Dibujar el circulo
 
 					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = false;
+						delete tablero[columna][fila];
+						tablero[columna][fila] = nullptr;
+						tablero[xInicial][yInicial] = new Peon(colorturno);
+						return true;
 						
 					}
 					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = true;
+						movposible = false;
 					}
 				}
 				break;
@@ -369,10 +376,13 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 					
 					// Dibujar el circulo
 					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = false;
+						delete tablero[columna][fila];
+						tablero[columna][fila] = nullptr;
+						tablero[xInicial][yInicial] = new Peon(colorturno);
+						return true;
 					}
 					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = true;
+						return true;
 					}
 				}
 				break;
@@ -393,7 +403,7 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 						movposible = false;
 					}
 					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = true;
+						return true;
 					}
 				}
 				break;
@@ -413,7 +423,7 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 						movposible = false;
 					}
 					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = true;
+						return true;
 					}
 				}
 				break;
@@ -434,7 +444,7 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 						
 					}
 					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = true;
+						return true;
 					}
 				}
 				break;
@@ -446,14 +456,7 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 				break;
 			}
 
-			if (movposible) {
-				// El rey no estaría en jaque
-				return true;
-			}
-			else if (!movposible) {
-				// El rey estaría en jaque
-				return false;
-			}
 		}
 	}
+	return false;
 }
