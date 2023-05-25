@@ -59,7 +59,8 @@ void Coordinador::tecla(unsigned char key)
 	}
 	else if (estado == PARTIDA)
 	{
-		
+		if (key == 'c')
+			estado = INICIO;
 	}
 	else if (estado == FIN)
 	{
