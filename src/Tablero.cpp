@@ -323,7 +323,7 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial, int xFin
 	TipoPieza tipoFinal = None;
 	char colorFinal = 'a';
 
-	if (color = 'b') colorRey = 'n';
+	if (color == 'b') colorRey = 'n';
 	else colorRey = 'b';
 
 
@@ -396,6 +396,20 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial, int xFin
 			delete tablero[xFinal][yFinal];
 			tablero[xFinal][yFinal] = nullptr;
 			tablero[xInicial][yInicial] = new Reina(color);
+			if (color != 'a')
+				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
+			return true;
+		}
+
+		break;
+
+	case(rey):
+		tablero[xFinal][yFinal] = new Rey(color);
+		variable = estaReyEnJaque(*this, colorRey, 1);
+		if (variable == true) {
+			delete tablero[xFinal][yFinal];
+			tablero[xFinal][yFinal] = nullptr;
+			tablero[xInicial][yInicial] = new Rey(color);
 			if (color != 'a')
 				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
 			return true;
