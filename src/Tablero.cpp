@@ -127,6 +127,15 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 		}
 
 		else {
+			
+			if (evitarJaquePropio(*this, xInicial, yInicial)) {
+				xInicial = -1;
+				yInicial = -1;
+				cout << "ESTAMOS EN JAQUE\n";
+				return;
+			}
+							
+
 			xFinal = casillaX;
 			yFinal = casillaY;
 			char color = tablero[xInicial][yInicial]->obtenerColor();
@@ -302,3 +311,149 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 
 
 
+bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
+	
+	// Doble bucle con las posiciones iniciales
+	// Sacar posibles posiciones finales y con el mover() validar todos los posibles movimientos
+	// Con esas posiciones finales q si q son validas
+	// Comprobar jaque con la funcion anterior de esas posiciones finales
+
+	TipoPieza tipo = tablero[xInicial][yInicial]->obtenerTipo();
+	
+	bool ocupado;
+
+	bool movposible = false;
+	char colorturno = tablero[xInicial][yInicial]->obtenerColor();
+
+	for (int columna = 0; columna < 8; ++columna) {
+		for (int fila = 0; fila < 8; ++fila) {
+			if (tablero[columna][fila] == nullptr) {
+				ocupado = false;
+			}
+			else if (tablero[columna][fila] != nullptr) {
+				ocupado = true;
+			}
+
+			switch (tipo) {
+			case peon:
+				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
+					
+					delete tablero[columna][fila];
+					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
+					delete tablero[xInicial][yInicial];
+					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+
+					tablero[columna][fila] = new Peon(colorturno);
+					
+					// Dibujar el circulo
+
+					if (estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = false;
+						
+					}
+					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = true;
+					}
+				}
+				break;
+
+			case caballo:
+				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
+
+					delete tablero[columna][fila];
+					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
+					delete tablero[xInicial][yInicial];
+					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+
+					tablero[columna][fila] = new Caballo(colorturno);
+					
+					// Dibujar el circulo
+					if (estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = false;
+					}
+					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = true;
+					}
+				}
+				break;
+
+			case alfil:
+				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
+
+					delete tablero[columna][fila];
+					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
+					delete tablero[xInicial][yInicial];
+					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+
+					tablero[columna][fila] = new Alfil(colorturno);
+					
+
+					// Dibujar el circulo
+					if (estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = false;
+					}
+					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = true;
+					}
+				}
+				break;
+
+			case torre:
+				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
+
+					delete tablero[columna][fila];
+					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
+					delete tablero[xInicial][yInicial];
+					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+					
+					tablero[columna][fila] = new Torre(colorturno);
+					
+					// Dibujar el circulo
+					if (estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = false;
+					}
+					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = true;
+					}
+				}
+				break;
+
+			case reina:
+				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
+
+					delete tablero[columna][fila];
+					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
+					delete tablero[xInicial][yInicial];
+					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
+
+					tablero[columna][fila] = new Reina(colorturno);
+					
+					// Dibujar el circulo
+					if (estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = false;
+						
+					}
+					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
+						movposible = true;
+					}
+				}
+				break;
+
+			case rey:
+				// No debería haber otro rey en el tablero
+				break;
+			default:
+				break;
+			}
+
+			if (movposible) {
+				// El rey no estaría en jaque
+				return true;
+			}
+			else if (!movposible) {
+				// El rey estaría en jaque
+				return false;
+			}
+		}
+	}
+}

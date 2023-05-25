@@ -54,5 +54,6 @@ public:
 	friend class Pieza;
 
 	bool estaReyEnJaque(Tablero& t, char colorRey,bool ocupado);
+	bool evitarJaquePropio(Tablero& t, int xInicial, int yInicial);
 };
 
