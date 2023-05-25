@@ -15,11 +15,11 @@ void Puzles::dibuja()
 		ETSIDI::printxy("Puzles", -5, 9);
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
-		ETSIDI::printxy("PULSE LA TECLA -1- PARA IR AL PUZLE 1", -10, 7);
-		ETSIDI::printxy("PULSE LA TECLA -2- PARA IR AL PUZLE 2", -10, 5);
-		ETSIDI::printxy("PULSE LA TECLA -3- PARA IR AL PUZLE 3", -10, 3);
-		ETSIDI::printxy("PULSE LA TECLA -x- PARA SALIR DEL PUZLE", -10, 1);
-		ETSIDI::printxy("PULSE LA TECLA -c- PARA VOLVER AL MENÚ", -10, -1);
+		ETSIDI::printxy("PULSE LA TECLA -1- PARA IR AL PUZLE 1", -15, 7);
+		ETSIDI::printxy("PULSE LA TECLA -2- PARA IR AL PUZLE 2", -15, 5);
+		ETSIDI::printxy("PULSE LA TECLA -3- PARA IR AL PUZLE 3", -15, 3);
+		ETSIDI::printxy("PULSE LA TECLA -x- PARA SALIR DEL PUZLE", -15, 1);
+		ETSIDI::printxy("PULSE LA TECLA -c- PARA VOLVER AL MENU", -15, -1);
 		ETSIDI::printxy("P&T Ajedrez", 2, -3);
 	}
 	else if (estado == PUZLE1)
