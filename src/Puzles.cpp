@@ -24,11 +24,11 @@ void Puzles::dibuja()
 	{
 		tablero1.dibuja();
 	}
-	/*else if (estado == PUZLE2)
+	else if (estado == PUZLE2)
 	{
 		tablero2.dibuja();
 	}
-	else if (estado == PUZLE3)
+	/*else if (estado == PUZLE3)
 	{
 		tablero3.dibuja();
 	}
@@ -57,7 +57,7 @@ void Puzles::tecla(unsigned char key)
 		}
 		if (key == '2')
 		{
-			//tablero2.inicializa();
+			tablero2.inicializa();
 			estado = PUZLE2;
 		}
 		if (key == '3')
@@ -67,7 +67,10 @@ void Puzles::tecla(unsigned char key)
 		}
 	}
 	else if (estado == PUZLE1) {
-
+		if (key == 'x')
+		{
+			estado = INICIOPUZLES;
+		}
 	}
 
 }
@@ -79,7 +82,7 @@ void Puzles::onMouseClick(int button, int state, int x, int y) {
 	}
 
 	else if (estado == PUZLE2) {
-		//tablero2.onMouseClick(button, state, x, y);
+		tablero2.onMouseClick(button, state, x, y);
 	}
 	else if (estado == PUZLE3) {
 		//tablero3.onMouseClick(button, state, x, y);

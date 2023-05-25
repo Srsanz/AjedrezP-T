@@ -69,6 +69,10 @@ void Coordinador::tecla(unsigned char key)
 	else if (estado == PUZLES) {
 		puzles.tecla(key);
 	}
+	if (key == 'c')
+	{
+		estado = INICIO;
+	}	
 	
 
 }
