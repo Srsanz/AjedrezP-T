@@ -184,7 +184,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 
 				bool reyenjaque = estaReyEnJaque(*this, color, ocupado);
 				if (reyenjaque) {
-					cout << "JAQUE";
+					//cout << "JAQUE";
 				}
 
 				// Reiniciar las posiciones inicial y final del peón
@@ -235,17 +235,20 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 					bool capturaPosible = false;
 					switch (pieza->tipo) {
 					case peon:
+											
 
 						if (colorpieza == 'n') {
 							// Movimiento válido: captura diagonal a la derecha e izuqierda
 							if (yRey == fila - 1 && (xRey == columna + 1 || xRey == columna - 1)) {
+								cout << "Jaque peon negro\n";
 								return true;
 							}
 						}
 						// Si el peón es negro
 						else if (colorpieza == 'b') {
 							// Movimiento válido: captura diagonal a la izquierda y derecha
-							if (yFinal == yInicial - 1 && (xFinal == xInicial + 1 || xFinal == xInicial - 1) && ocupado) {
+							if (yRey == fila + 1 && (xRey == columna + 1 || xRey == columna - 1)) {
+								cout << "Jaque peon blanco\n";
 								return true;
 							}
 						}
@@ -253,21 +256,25 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 
 					case caballo:
 							if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+								cout << "Jaque caballo\n";
 								return true;
 							}
 						break;
 					case alfil:
 						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+							cout << "Jaque alfil\n";
 							return true;
 						}
 						break;
 					case torre:
 						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+							cout << "Jaque torre\n";
 							return true;
 						}
 						break;
 					case reina:
 						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
+							cout << "Jaque reina\n";
 							return true;
 						}
 						break;
