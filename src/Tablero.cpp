@@ -348,13 +348,24 @@ bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
 					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
 
 					tablero[columna][fila] = new Peon(colorturno);
-					
+
 					// Dibujar el circulo
 
 					if (estaReyEnJaque(*this, colorturno, ocupado)) {
 						delete tablero[columna][fila];
 						tablero[columna][fila] = nullptr;
-						tablero[xInicial][yInicial] = new Peon(colorturno);
+						switch (tipo) {
+						case peon: 
+							tablero[xInicial][yInicial] = new Peon(colorturno); break;
+						case caballo:
+							tablero[xInicial][yInicial] = new Caballo(colorturno); break;
+						case torre:
+							tablero[xInicial][yInicial] = new Torre(colorturno); break;
+						case alfil:
+							tablero[xInicial][yInicial] = new Alfil(colorturno); break;
+						case reina:
+							tablero[xInicial][yInicial] = new Reina(colorturno); break;
+						}
 						return true;
 						
 					}
