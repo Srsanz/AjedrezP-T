@@ -54,6 +54,10 @@ public:
 	friend class Pieza;
 
 	bool estaReyEnJaque(Tablero& t, char colorRey,bool ocupado);
-	bool evitarJaquePropio(Tablero& t, int xInicial, int yInicial);
+
+	bool evitarJaquePropio(Tablero& t, int xInicial, int yInicial, int xFinal, int yFinal);
+
+	void dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int yFinal, char colorFinal);
+
 };
 

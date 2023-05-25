@@ -126,16 +126,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			}	
 		}
 
-		else {
-			
-			if (evitarJaquePropio(*this, xInicial, yInicial)) {
-				xInicial = -1;
-				yInicial = -1;
-				cout << "ESTAMOS EN JAQUE\n";
-				return;
-			}
-							
-
+		else {				
 			xFinal = casillaX;
 			yFinal = casillaY;
 			char color = tablero[xInicial][yInicial]->obtenerColor();
@@ -156,14 +147,25 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				if (color == color2) return;
 			}
 
-
 			if (!tablero[xInicial][yInicial]->mover(xInicial, yInicial, xFinal, yFinal, ocupado, *this)) {
-				//return; // Movimiento inválido, salir de la función
+				// Movimiento inválido, salir de la función
 				xInicial = -1;
 				yInicial = -1;
 				xFinal = -1;
 				yFinal = -1;
+				return;
 			}
+
+			//if para ver si lo dejas en jaque a tu propio rey
+			if (evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
+				cout << "TE ESTAS PONIENDO EN JAQUE\n";
+				xInicial = -1;
+				yInicial = -1;
+				xFinal = -1;
+				yFinal = -1;
+				return;
+			}
+
 			else { // La casilla está vacía
 				// Mover el peón a la posición final
 				delete tablero[xFinal][yFinal];
@@ -308,166 +310,138 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 }
 
 
+bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial, int xFinal, int yFinal) {
+
+	int x1 = xInicial, y1 = yInicial;
+	TipoPieza tipoPieza = tablero[xInicial][yInicial]->obtenerTipo();
+	char color = tablero[xInicial][yInicial]->obtenerColor();
+
+	bool variable = false;
+
+	char colorRey;
+
+	TipoPieza tipoFinal = None;
+	char colorFinal = 'a';
+
+	if (color = 'b') colorRey = 'n';
+	else colorRey = 'b';
 
 
-
-bool Tablero::evitarJaquePropio(Tablero& t, int xInicial, int yInicial) {
-	
-	// Doble bucle con las posiciones iniciales
-	// Sacar posibles posiciones finales y con el mover() validar todos los posibles movimientos
-	// Con esas posiciones finales q si q son validas
-	// Comprobar jaque con la funcion anterior de esas posiciones finales
-
-	TipoPieza tipo = tablero[xInicial][yInicial]->obtenerTipo();
-	
-
-	bool ocupado;
-
-	bool movposible = false;
-	char colorturno = tablero[xInicial][yInicial]->obtenerColor();
-	TipoPieza tipo2;
-
-	for (int columna = 0; columna < 8; ++columna) {
-		for (int fila = 0; fila < 8; ++fila) {
-			if (tablero[columna][fila] == nullptr) {
-				ocupado = false;
-				tipo2 = None;
-			}
-			else if (tablero[columna][fila] != nullptr) {
-				ocupado = true;
-				tipo2 = tablero[columna][fila]->obtenerTipo();
-			}
-
-			switch (tipo2) {
-			case peon:
-				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
-					
-					delete tablero[columna][fila];
-					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
-					delete tablero[xInicial][yInicial];
-					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-
-					tablero[columna][fila] = new Peon(colorturno);
-
-					// Dibujar el circulo
-
-					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						delete tablero[columna][fila];
-						tablero[columna][fila] = nullptr;
-						switch (tipo) {
-						case peon: 
-							tablero[xInicial][yInicial] = new Peon(colorturno); break;
-						case caballo:
-							tablero[xInicial][yInicial] = new Caballo(colorturno); break;
-						case torre:
-							tablero[xInicial][yInicial] = new Torre(colorturno); break;
-						case alfil:
-							tablero[xInicial][yInicial] = new Alfil(colorturno); break;
-						case reina:
-							tablero[xInicial][yInicial] = new Reina(colorturno); break;
-						}
-						return true;
-						
-					}
-					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = false;
-					}
-				}
-				break;
-
-			case caballo:
-				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
-
-					delete tablero[columna][fila];
-					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
-					delete tablero[xInicial][yInicial];
-					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-
-					tablero[columna][fila] = new Caballo(colorturno);
-					
-					// Dibujar el circulo
-					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						delete tablero[columna][fila];
-						tablero[columna][fila] = nullptr;
-						tablero[xInicial][yInicial] = new Peon(colorturno);
-						return true;
-					}
-					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						return true;
-					}
-				}
-				break;
-
-			case alfil:
-				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
-
-					delete tablero[columna][fila];
-					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
-					delete tablero[xInicial][yInicial];
-					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-
-					tablero[columna][fila] = new Alfil(colorturno);
-					
-
-					// Dibujar el circulo
-					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = false;
-					}
-					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						return true;
-					}
-				}
-				break;
-
-			case torre:
-				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
-
-					delete tablero[columna][fila];
-					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
-					delete tablero[xInicial][yInicial];
-					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-					
-					tablero[columna][fila] = new Torre(colorturno);
-					
-					// Dibujar el circulo
-					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = false;
-					}
-					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						return true;
-					}
-				}
-				break;
-
-			case reina:
-				if (tablero[columna][fila]->mover(xInicial, yInicial, columna, fila, ocupado, t)) {
-
-					delete tablero[columna][fila];
-					tablero[columna][fila] = nullptr; // Eliminar la pieza de la posición final si existe
-					delete tablero[xInicial][yInicial];
-					tablero[xInicial][yInicial] = nullptr; // Establecer la posición inicial como vacía
-
-					tablero[columna][fila] = new Reina(colorturno);
-					
-					// Dibujar el circulo
-					if (estaReyEnJaque(*this, colorturno, ocupado)) {
-						movposible = false;
-						
-					}
-					else if (!estaReyEnJaque(*this, colorturno, ocupado)) {
-						return true;
-					}
-				}
-				break;
-
-			case rey:
-				// No debería haber otro rey en el tablero
-				break;
-			default:
-				break;
-			}
-
-		}
+	if (tablero[xFinal][yFinal] != nullptr) {
+		tipoFinal = tablero[xFinal][yFinal]->obtenerTipo();
+		colorFinal = tablero[xFinal][yFinal]->obtenerColor();
 	}
-	return false;
+
+	delete tablero[x1][y1];
+	tablero[x1][y1] = nullptr;
+
+	switch (tipoPieza) {
+	case(peon):
+		tablero[xFinal][yFinal] = new Peon(color);
+		variable = estaReyEnJaque(*this, colorRey, 1);
+		if (variable == true) {
+			delete tablero[xFinal][yFinal];
+			tablero[xFinal][yFinal] = nullptr;
+			tablero[xInicial][yInicial] = new Peon(color);
+			if (color != 'a')
+				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
+			return true;
+		}
+		break;
+
+	case(caballo):
+		tablero[xFinal][yFinal] = new Caballo(color);
+		variable = estaReyEnJaque(*this, colorRey, 1);
+		if (variable == true) {
+			delete tablero[xFinal][yFinal];
+			tablero[xFinal][yFinal] = nullptr;
+			tablero[xInicial][yInicial] = new Caballo(color);
+			if (color != 'a')
+				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
+			return true;
+		}
+		break;
+
+	case(torre):
+		tablero[xFinal][yFinal] = new Torre(color);
+		variable = estaReyEnJaque(*this, colorRey, 1);
+		if (variable == true) {
+			delete tablero[xFinal][yFinal];
+			tablero[xFinal][yFinal] = nullptr;
+			tablero[xInicial][yInicial] = new Torre(color);
+			if (color != 'a')
+				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
+			return true;
+		}
+		break;
+
+	case(alfil):
+		tablero[xFinal][yFinal] = new Alfil(color);
+		variable = estaReyEnJaque(*this, colorRey, 1);
+		if (variable == true) {
+			delete tablero[xFinal][yFinal];
+			tablero[xFinal][yFinal] = nullptr;
+			tablero[xInicial][yInicial] = new Alfil(color);
+			if (color != 'a')
+				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
+			return true;
+		}
+		break;
+
+
+	case(reina):
+		tablero[xFinal][yFinal] = new Reina(color);
+		variable = estaReyEnJaque(*this, colorRey, 1);
+		if (variable == true) {
+			delete tablero[xFinal][yFinal];
+			tablero[xFinal][yFinal] = nullptr;
+			tablero[xInicial][yInicial] = new Reina(color);
+			if (color != 'a')
+				dibujaPiezaBorrad(*this, tipoFinal, xFinal, yFinal, colorFinal);
+			return true;
+		}
+
+		break;
+
+	}
+
+
 }
+
+
+
+
+
+void Tablero::dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int yFinal, char colorFinal) {
+	switch (tipoFinal) {
+	case(peon):
+		tablero[xFinal][yFinal] = new Peon(colorFinal);
+		break;
+
+	case(caballo):
+		tablero[xFinal][yFinal] = new Caballo(colorFinal);
+		break;
+
+	case(torre):
+		tablero[xFinal][yFinal] = new Torre(colorFinal);
+		break;
+
+	case(alfil):
+		tablero[xFinal][yFinal] = new Alfil(colorFinal);
+		break;
+
+	case(reina):
+		tablero[xFinal][yFinal] = new Reina(colorFinal);
+		break;
+
+	case(rey):
+		tablero[xFinal][yFinal] = new Rey(colorFinal);
+		break;
+	}
+
+
+
+}
+
+
+
