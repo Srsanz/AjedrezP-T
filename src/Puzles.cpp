@@ -20,11 +20,11 @@ void Puzles::dibuja()
 		ETSIDI::printxy("PULSE LA TECLA -S- PARA SALIR", -10, 3);
 		ETSIDI::printxy("P&T Ajedrez", 2, 0);
 	}
-	/*else if (estado == PUZLE1)
+	else if (estado == PUZLE1)
 	{
 		tablero1.dibuja();
 	}
-	else if (estado == PUZLE2)
+	/*else if (estado == PUZLE2)
 	{
 		tablero2.dibuja();
 	}
@@ -52,7 +52,7 @@ void Puzles::tecla(unsigned char key)
 			exit(0);
 		if (key == '1')
 		{
-			//tablero1.inicializa();
+			tablero1.inicializa();
 			estado = PUZLE1;
 		}
 		if (key == '2')
@@ -69,15 +69,15 @@ void Puzles::tecla(unsigned char key)
 	else if (estado == PUZLE1) {
 
 	}
-	
+
 }
 
 void Puzles::onMouseClick(int button, int state, int x, int y) {
 
 	if (estado == PUZLE1) {
-		//tablero1.onMouseClick(button, state, x, y);
+		tablero1.onMouseClick(button, state, x, y);
 	}
-	
+
 	else if (estado == PUZLE2) {
 		//tablero2.onMouseClick(button, state, x, y);
 	}
@@ -90,5 +90,5 @@ void Puzles::onMouseClick(int button, int state, int x, int y) {
 
 void Puzles::mueve()
 {
-		
+
 }
