@@ -17,8 +17,10 @@ void Puzles::dibuja()
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
 		ETSIDI::printxy("PULSE LA TECLA -1- PARA IR AL PUZLE 1", -10, 7);
 		ETSIDI::printxy("PULSE LA TECLA -2- PARA IR AL PUZLE 2", -10, 5);
-		ETSIDI::printxy("PULSE LA TECLA -S- PARA SALIR", -10, 3);
-		ETSIDI::printxy("P&T Ajedrez", 2, 0);
+		ETSIDI::printxy("PULSE LA TECLA -3- PARA IR AL PUZLE 3", -10, 3);
+		ETSIDI::printxy("PULSE LA TECLA -x- PARA SALIR DEL PUZLE", -10, 1);
+		ETSIDI::printxy("PULSE LA TECLA -c- PARA VOLVER AL MENÚ", -10, -1);
+		ETSIDI::printxy("P&T Ajedrez", 2, -3);
 	}
 	else if (estado == PUZLE1)
 	{
@@ -66,7 +68,7 @@ void Puzles::tecla(unsigned char key)
 			estado = PUZLE3;
 		}
 	}
-	else if (estado == PUZLE1) {
+	else if (estado == PUZLE1||estado==PUZLE2||estado==PUZLE3) {
 		if (key == 'x')
 		{
 			estado = INICIOPUZLES;
