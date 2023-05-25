@@ -1,7 +1,8 @@
 #include "Peon.h"
 #include "Pieza.h"
-#include "Reina.h"
+#include "Torre.h"
 #include "Rey.h"
+#include "Alfil.h"
 #include "Puzle2.h"
 #include <math.h>
 #include "ETSIDI.h"
@@ -73,11 +74,15 @@ void Puzle2::inicializa() {
 		}
 	}
 
-	tablero2[0][6] = new Peon('n');
-	tablero2[0][1] = new Reina('b');
-	tablero2[5][7] = new Rey('n');
-	tablero2[5][5] = new Rey('b');
+	tablero2[5][1] = new Peon('b');
+	tablero2[7][0] = new Torre('b');
+	tablero2[6][1] = new Rey('b');
+	tablero2[5][5] = new Alfil('b');
 
+	tablero2[5][6] = new Peon('n');
+	tablero2[5][7] = new Torre('n');
+	tablero2[6][7] = new Rey('n');
+	tablero2[6][5] = new Peon('n');
 
 }
 
@@ -116,11 +121,11 @@ void Puzle2::onMouseClick(int button, int state, int x, int y) {
 			}
 			else {
 
-				if (tipo == reina && color == 'b' && xfinal1 == 5 && yfinal1 == 6) {
+				if (tipo == torre && color == 'b' && xfinal1 == 7 && yfinal1 == 7) {
 					cout << "Has ganado" << endl;
 					heganado = true;
 
-					tablero2[xfinal1][yfinal1] = new Reina('b');
+					tablero2[xfinal1][yfinal1] = new Torre('b');
 					delete tablero2[xinicial1][yinicial1];
 					tablero2[xinicial1][yinicial1] = nullptr;
 				}
