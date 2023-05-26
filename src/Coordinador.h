@@ -11,16 +11,20 @@ public:
 	virtual ~Coordinador() {};
 
 	void dibuja();
-	void mueve();
 	void tecla(unsigned char key);
 	void onMouseClick(int button, int state, int x, int y);
+	
+	friend class Tablero;
+
 
 protected:
 
-	enum Estado { INICIO, PARTIDA, FIN, PUZLES, PAUSA };
+	enum Estado { INICIO, PARTIDA, FIN, PUZLES, PAUSA, INSTRUCCIONES};
 	Estado estado;
 
 	Tablero tablero;
 	Puzles puzles;
+
+	
 };
 

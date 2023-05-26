@@ -74,6 +74,10 @@ void Tablero::inicializa() {
 		}
 	}
 
+	turno = 1;
+	contadorblanco = 0;
+	contadornegro = 0;
+
 	
 	tablero[1][0] = new Caballo('b');
 	tablero[6][0] = new Caballo('b');
@@ -209,11 +213,25 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 					tablero[xFinal][yFinal] = new Alfil(color);
 				}
 
-				bool reyenjaque = estaReyEnJaque(*this, color, ocupado);
-				if (reyenjaque) {
-					//cout << "JAQUE";
+				if (estaReyEnJaque(*this, color, ocupado)) {
+					if (turno % 2 != 0) {
+						contadorblanco++;
+						cout << "BLANCO  " << contadorblanco << "  ---  " << contadornegro << "  NEGRO";
+						if (contadorblanco == jaques_fin) {
+							fin = true;
+							cout << "FIN  " << "LAS BLANCAS GANAN" << endl;
+						}
+					}
+					if (turno % 2 == 0) {
+						contadornegro++;
+						cout << "BLANCO  " << contadorblanco << "  ---  " << contadornegro << "  NEGRO";
+						if (contadornegro == jaques_fin) {
+							fin = true;
+							cout << "FIN  " << "LAS NEGRAS GANAN" << endl;
+						}
+					}
 				}
-				bool fin=JM(reyenjaque, propio);
+
 				
 
 				// Reiniciar las posiciones inicial y final del peón

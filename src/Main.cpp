@@ -96,8 +96,8 @@ void onMouseClick(int button, int state, int x, int y) {
 
 void OnTimer(int value)
 {
-	//poner aqui el código de animacion
-	coordinador.mueve();
+	
+	
 
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);

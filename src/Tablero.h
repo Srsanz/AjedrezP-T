@@ -13,11 +13,11 @@ class Tablero
 private:
 	Pieza* tablero[8][8];
 	int turno;
-	// Creacion matriz de piezas
+	int contadorblanco;
+	int contadornegro;
+	bool fin;
+	int jaques_fin;
 
-
-	// Creacion de las piezas
-	// Peon peon1;
 
 
 	float x_ojo;
@@ -26,7 +26,7 @@ private:
 
 public:
 	// Constructor en blanco
-	Tablero():turno(1){
+	Tablero() :turno(1), contadorblanco(0), contadornegro(0), fin(0), jaques_fin(5) {
 		// Inicializacion del tablero	
 		for (int y = 0; y < 8; y++) {
 			for (int x = 0; x < 8; x++) {
@@ -52,6 +52,7 @@ public:
 	friend class Alfil;
 	friend class Caballo;
 	friend class Pieza;
+	friend class Coordinador;
 
 	bool estaReyEnJaque(Tablero& t, char colorRey,bool ocupado);
 
