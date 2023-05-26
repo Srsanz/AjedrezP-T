@@ -17,7 +17,7 @@ public:
 
 protected:
 
-	enum Estado { INICIO, PARTIDA, FIN, PUZLES };
+	enum Estado { INICIO, PARTIDA, FIN, PUZLES, PAUSA };
 	Estado estado;
 
 	Tablero tablero;

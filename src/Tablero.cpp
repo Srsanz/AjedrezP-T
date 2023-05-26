@@ -473,11 +473,11 @@ bool Tablero::estaReyEnJaqueMate(const Tablero& t, int turno) {
 	char color;
 
 	if (turno % 2 != 0) {
-		color = 'n';
+		color = 'b';
 	}
 
 	if (turno % 2 == 0) {
-		color = 'b';
+		color = 'n';
 	}
 
 
@@ -488,9 +488,11 @@ bool Tablero::estaReyEnJaqueMate(const Tablero& t, int turno) {
 					if (tablero[xInicial][yInicial] != nullptr) {
 						//if (tablero[xInicial][yInicial]->obtenerColor() == color) {
 							if (evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
+								cout << "mov invalido" << endl;
 								// mov invalido
 							}
 							if (!evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
+								cout << "mov valido" << endl;
 								return true;
 								// mov valido
 							}

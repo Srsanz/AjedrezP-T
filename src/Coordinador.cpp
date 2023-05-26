@@ -28,6 +28,12 @@ void Coordinador::dibuja()
 	{
 		puzles.dibuja();
 	}
+	else if (estado == PAUSA)
+	{
+		ETSIDI::setTextColor(1, 0, 0);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 16);
+		ETSIDI::printxy("PAUSA", -5, 0);
+	}
 	else if (estado == FIN)
 	{
 		tablero.dibuja();
@@ -44,7 +50,7 @@ void Coordinador::tecla(unsigned char key)
 {
 	if (estado == INICIO)
 	{
-		if (key == 'e')
+		if (key == 'e'||key=='E')
 		{
 			tablero.inicializa();
 			estado = PARTIDA;
@@ -61,11 +67,19 @@ void Coordinador::tecla(unsigned char key)
 	{
 		if (key == 'c')
 			estado = INICIO;
+		if (key == 'p') {
+			estado = PAUSA;
+		}
 	}
 	else if (estado == FIN)
 	{
 		if (key == 'c')
 			estado = INICIO;
+	}
+	else if (estado == PAUSA)
+	{
+		if (key == 'p')
+			estado = PARTIDA;
 	}
 	else if (estado == PUZLES) {
 		puzles.tecla(key);
