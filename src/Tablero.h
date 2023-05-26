@@ -58,6 +58,6 @@ public:
 	bool evitarJaquePropio(Tablero& t, int xInicial, int yInicial, int xFinal, int yFinal);
 
 	void dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int yFinal, char colorFinal);
-	//bool estaReyEnJaqueMate(const Tablero& t, char colorpieza);
+	bool estaReyEnJaqueMate(const Tablero& t, char colorpieza);
 };
 

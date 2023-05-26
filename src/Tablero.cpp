@@ -133,12 +133,14 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			yFinal = casillaY;
 			char color = tablero[xInicial][yInicial]->obtenerColor();
 			TipoPieza tipo= tablero[xInicial][yInicial]->obtenerTipo();
-			/*
+			
+
+			//JAQUE MATE
 			if (!estaReyEnJaqueMate(*this, color)) {
 				cout << "jaque mate" << endl;
 			}
-			*/
 			
+
 			//if para ver si la casilla está ocupada
 			bool ocupado;
 			int x = xFinal - xInicial;
@@ -464,7 +466,7 @@ void Tablero::dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int
 
 }
 
-/*
+
 bool Tablero::estaReyEnJaqueMate(const Tablero& t, char colorpieza) {
 	
 	
@@ -473,7 +475,7 @@ bool Tablero::estaReyEnJaqueMate(const Tablero& t, char colorpieza) {
 			for (int xFinal = 0; xFinal < 8; xFinal++) {
 				for (int yFinal = 0; yFinal < 8; yFinal++) {
 					if (tablero[xInicial][yInicial] != nullptr) {
-						if (tablero[xInicial][yInicial]->obtenerColor() == colorpieza) {
+						//if (tablero[xInicial][yInicial]->obtenerColor() == colorpieza) {
 							if (evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
 								// mov invalido
 							}
@@ -481,7 +483,7 @@ bool Tablero::estaReyEnJaqueMate(const Tablero& t, char colorpieza) {
 								return true;
 								// mov valido
 							}
-						}
+						//}
 					}
 									
 				}
@@ -490,12 +492,4 @@ bool Tablero::estaReyEnJaqueMate(const Tablero& t, char colorpieza) {
 	}
 
 	return false;
-
-
-
 }
-
-
-
-
-*/
