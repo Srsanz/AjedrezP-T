@@ -167,8 +167,9 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				return;
 			}
 
+			bool propio = evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal);
 			//if para ver si lo dejas en jaque a tu propio rey
-			if (evitarJaquePropio(*this, xInicial, yInicial, xFinal, yFinal)) {
+			if (propio) {
 				cout << "TE ESTAS PONIENDO EN JAQUE\n";
 				xInicial = -1;
 				yInicial = -1;
@@ -207,6 +208,13 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				bool reyenjaque = estaReyEnJaque(*this, color, ocupado);
 				if (reyenjaque) {
 					//cout << "JAQUE";
+				}
+				bool fin=JM(reyenjaque, propio);
+				if (fin == true) {
+					cout << "Fin" << endl;
+				}
+				else if (fin == false) {
+					cout << "AA" << endl;
 				}
 
 				// Reiniciar las posiciones inicial y final del peón
@@ -468,6 +476,12 @@ void Tablero::dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int
 
 }
 
+bool Tablero::JM(bool rj, bool prop) {
+	if (rj && !prop) {
+		return true;
+	}
+	else return false;
+}
 
 bool Tablero::estaReyEnJaqueMate(const Tablero& t, int turno) {
 	char color;
