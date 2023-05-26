@@ -100,6 +100,8 @@ void Tablero::inicializa() {
 		tablero[i][1] = new Peon('b'); //peones blancos en toda la fila 1
 		tablero[i][6] = new Peon('n'); //peones negros en toda la fila 6
 	}
+
+	ETSIDI::play("sonidos/Empieza.wav");
 }
 
 int xInicial = -1, yInicial = -1;
@@ -179,6 +181,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 			//if para ver si lo dejas en jaque a tu propio rey
 			if (propio) {
 				cout << "TE ESTAS PONIENDO EN JAQUE\n";
+				ETSIDI::play("sonidos/jaque.wav");
 				xInicial = -1;
 				yInicial = -1;
 				xFinal = -1;
@@ -233,6 +236,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 				}
 
 				
+				if(ocupado==1&& estaReyEnJaque(*this, color, ocupado)==false) ETSIDI::play("sonidos/comer.wav");
 
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
@@ -288,6 +292,7 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 							// Movimiento válido: captura diagonal a la derecha e izuqierda
 							if (yRey == fila - 1 && (xRey == columna + 1 || xRey == columna - 1)) {
 								cout << "Jaque peon negro\n";
+								ETSIDI::play("sonidos/jaque.wav");
 								return true;
 							}
 						}
@@ -296,6 +301,7 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 							// Movimiento válido: captura diagonal a la izquierda y derecha
 							if (yRey == fila + 1 && (xRey == columna + 1 || xRey == columna - 1)) {
 								cout << "Jaque peon blanco\n";
+								ETSIDI::play("sonidos/jaque.wav");
 								return true;
 							}
 						}
@@ -304,24 +310,28 @@ bool Tablero::estaReyEnJaque(Tablero& t, char colorpieza, bool ocupado) {
 					case caballo:
 							if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
 								cout << "Jaque caballo\n";
+								ETSIDI::play("sonidos/jaque.wav");
 								return true;
 							}
 						break;
 					case alfil:
 						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
 							cout << "Jaque alfil\n";
+							ETSIDI::play("sonidos/jaque.wav");
 							return true;
 						}
 						break;
 					case torre:
 						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
 							cout << "Jaque torre\n";
+							ETSIDI::play("sonidos/jaque.wav");
 							return true;
 						}
 						break;
 					case reina:
 						if (tablero[columna][fila]->mover(columna, fila, xRey, yRey, ocupado, t)) {
 							cout << "Jaque reina\n";
+							ETSIDI::play("sonidos/jaque.wav");
 							return true;
 						}
 						break;

@@ -117,10 +117,12 @@ void Coordinador::dibuja()
 		if ((tablero.turno % 2) != 0) {
 			ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
 			ETSIDI::printxy("LAS NEGRAS GANAN", -10, 9);
+			ETSIDI::play("sonidos/vnegras.wav");
 		}
 		else if ((tablero.turno % 2) == 0) {
 			ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
 			ETSIDI::printxy("LAS BLANCAS GANAN", -10, 9);
+			ETSIDI::play("sonidos/vblancas.wav");
 		}
 		
 
