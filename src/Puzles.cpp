@@ -54,16 +54,19 @@ void Puzles::tecla(unsigned char key)
 			exit(0);
 		if (key == '1')
 		{
+			tablero1.dibuja();
 			tablero1.inicializa();
 			estado = PUZLE1;
 		}
 		if (key == '2')
 		{
+			tablero2.dibuja();
 			tablero2.inicializa();
 			estado = PUZLE2;
 		}
 		if (key == '3')
 		{
+			tablero3.dibuja();
 			tablero3.inicializa();
 			estado = PUZLE3;
 		}

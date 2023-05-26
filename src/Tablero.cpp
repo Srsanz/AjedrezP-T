@@ -68,7 +68,11 @@ void Tablero::inicializa() {
 	z_ojo = 30; // habria q mirarlo bien
 
 
-	
+	for (int y = 0; y < 8; y++) {
+		for (int x = 0; x < 8; x++) {
+			tablero[x][y] = nullptr;
+		}
+	}
 
 	
 	tablero[1][0] = new Caballo('b');

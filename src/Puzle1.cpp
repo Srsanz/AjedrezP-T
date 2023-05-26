@@ -66,6 +66,7 @@ void Puzle1::inicializa() {
 	z_ojo = 30; // habria q mirarlo bien
 
 
+
 	// Inicializacion del tablero	
 	for (int y = 0; y < 8; y++) {
 		for (int x = 0; x < 8; x++) {

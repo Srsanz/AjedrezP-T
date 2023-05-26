@@ -52,6 +52,7 @@ void Coordinador::tecla(unsigned char key)
 	{
 		if (key == 'e'||key=='E')
 		{
+			tablero.dibuja();
 			tablero.inicializa();
 			estado = PARTIDA;
 		}
@@ -80,6 +81,8 @@ void Coordinador::tecla(unsigned char key)
 	{
 		if (key == 'p')
 			estado = PARTIDA;
+		if (key == 's')
+			estado = INICIO;
 	}
 	else if (estado == PUZLES) {
 		puzles.tecla(key);
