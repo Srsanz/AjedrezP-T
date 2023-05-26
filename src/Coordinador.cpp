@@ -32,7 +32,11 @@ void Coordinador::dibuja()
 	{
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("fuentes/Bitwise.ttf", 16);
-		ETSIDI::printxy("PAUSA", -5, 0);
+		ETSIDI::printxy("¿JAQUE MATE?", -5, 0);
+		ETSIDI::setTextColor(0, 0, 1);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 16);
+		ETSIDI::printxy("Pulsa <p> para continuar la partida", -5, -3);
+		ETSIDI::printxy("Pulsa <s> para terminar la partida", -5, -5);
 	}
 	else if (estado == FIN)
 	{
@@ -66,8 +70,6 @@ void Coordinador::tecla(unsigned char key)
 	}
 	else if (estado == PARTIDA)
 	{
-		if (key == 'c')
-			estado = INICIO;
 		if (key == 'p') {
 			estado = PAUSA;
 		}
