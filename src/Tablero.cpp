@@ -100,9 +100,9 @@ int xFinal = -1, yFinal = -1;
 void Tablero::onMouseClick(int button, int state, int x, int y) {
 	
 	//JAQUE MATE
-	if (!estaReyEnJaqueMate(*this, turno)) {
+	/*if (!estaReyEnJaqueMate(*this, turno)) {
 		cout << "jaque mate" << endl;
-	}
+	}*/
 
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 		// Calcular la posición del clic en términos de celdas del tablero
@@ -210,12 +210,7 @@ void Tablero::onMouseClick(int button, int state, int x, int y) {
 					//cout << "JAQUE";
 				}
 				bool fin=JM(reyenjaque, propio);
-				if (fin == true) {
-					cout << "Fin" << endl;
-				}
-				else if (fin == false) {
-					cout << "AA" << endl;
-				}
+				
 
 				// Reiniciar las posiciones inicial y final del peón
 				xInicial = -1;
@@ -477,13 +472,14 @@ void Tablero::dibujaPiezaBorrad(Tablero& t, TipoPieza tipoFinal, int xFinal, int
 }
 
 bool Tablero::JM(bool rj, bool prop) {
-	if (rj && !prop) {
+	if (rj && prop) {
+		cout << "Fin" << endl;
 		return true;
 	}
 	else return false;
 }
 
-bool Tablero::estaReyEnJaqueMate(const Tablero& t, int turno) {
+/*bool Tablero::estaReyEnJaqueMate(const Tablero& t, int turno) {
 	char color;
 
 	if (turno % 2 != 0) {
@@ -520,3 +516,4 @@ bool Tablero::estaReyEnJaqueMate(const Tablero& t, int turno) {
 
 	return false;
 }
+*/

@@ -30,11 +30,11 @@ void Puzles::dibuja()
 	{
 		tablero2.dibuja();
 	}
-	/*else if (estado == PUZLE3)
+	else if (estado == PUZLE3)
 	{
 		tablero3.dibuja();
 	}
-	else if (estado == FIN)
+	/*else if (estado == FIN)
 	{
 		tablero.dibuja();
 		ETSIDI::setTextColor(1, 0, 0);
@@ -64,7 +64,7 @@ void Puzles::tecla(unsigned char key)
 		}
 		if (key == '3')
 		{
-			//tablero3.inicializa();
+			tablero3.inicializa();
 			estado = PUZLE3;
 		}
 	}
@@ -87,7 +87,7 @@ void Puzles::onMouseClick(int button, int state, int x, int y) {
 		tablero2.onMouseClick(button, state, x, y);
 	}
 	else if (estado == PUZLE3) {
-		//tablero3.onMouseClick(button, state, x, y);
+		tablero3.onMouseClick(button, state, x, y);
 	}
 
 	glutPostRedisplay();
